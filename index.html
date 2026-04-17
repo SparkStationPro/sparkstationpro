@@ -213,9 +213,9 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 .lanyard-text-full p{font-size:17px;color:var(--mu);line-height:1.85}
 .photo-gallery{margin-top:48px}
 .gallery-duo{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.gallery-item{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s}
+.gallery-item{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s;background:#020208}
 .gallery-item:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 32px 80px rgba(232,67,147,.25),0 0 40px rgba(0,206,201,.15)}
-.gallery-img-side{width:100%;height:520px;object-fit:cover;display:block;mix-blend-mode:screen}
+.gallery-img-side{width:100%;height:520px;object-fit:contain;display:block}
 .gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(3,3,8,.95) 0%,transparent 100%);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65)}
 @media(max-width:768px){.gallery-duo{grid-template-columns:1fr;gap:20px}.gallery-img-side{height:380px}}
 
@@ -313,7 +313,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     </h1>
     <p class="hsub">Every soul steps in as a face in the crowd. Everyone comes out a star. Placed inside your official festival artwork, delivered to their phone in seconds, and shared to the world tagging your socials. Every share becomes a ripple. Every smile, your signal.</p>
     <div class="booth-section">
-      <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup">
+      <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup" width="1536" height="1024">
     </div>
   </div>
 </section>
@@ -402,12 +402,10 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <div class="photo-gallery rv">
       <div class="gallery-duo">
         <div class="gallery-item">
-          <img src="images/vip-lanyard-splendour.jpg" alt="VIP Lanyard - Splendour" class="gallery-img-side">
-          <div class="gallery-caption">Splendour In The Grass</div>
+          <img src="images/vip-lanyard-splendour.jpg" alt="VIP Lanyard" class="gallery-img-side" width="3712" height="5568">
         </div>
         <div class="gallery-item">
-          <img src="subheartblue.png" alt="VIP Lanyard - Subsonic" class="gallery-img-side">
-          <div class="gallery-caption">Subsonic Music Festival</div>
+          <img src="images/splendour-lanyard.jpg" alt="VIP Lanyard" class="gallery-img-side" width="2757" height="4920">
         </div>
       </div>
     </div>
