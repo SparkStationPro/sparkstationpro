@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-img{max-width:100%;height:auto}
+img{max-width:100%;height:auto;display:block}
 :root{
   --pink:#e84393;
   --cyan:#00cec9;
@@ -17,24 +17,39 @@ img{max-width:100%;height:auto}
   --purple:#6c5ce7;
   --bg:#030308;
   --bg2:#07070E;
-  --mu:rgba(255,255,255,0.65)
+  --mu:rgba(255,255,255,0.65);
+  --primary-glow:0 0 18px rgba(140,90,255,0.55),0 0 40px rgba(0,200,255,0.25);
+  --primary-text-glow:0 0 14px rgba(140,90,255,0.45)
 }
 html{scroll-behavior:smooth}
 body{font-family:'Exo 2',sans-serif;font-size:18px;line-height:1.75;background:var(--bg);color:#fff;overflow-x:hidden}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
 nav.scrolled{background:rgba(3,3,8,.97);border-bottom:1px solid rgba(255,255,255,.08)}
 .logo{font-family:'Exo 2',sans-serif;font-size:19px;font-weight:900;text-decoration:none;display:flex;align-items:center;gap:4px;line-height:1}
 .logo svg{flex-shrink:0;margin-right:2px}
-.logo .lspark{color:#fff}
-.logo .lstation{color:var(--pink)}
+.logo .lspark{color:#fff;text-shadow:var(--primary-text-glow)}
+.logo .lstation{color:var(--pink);text-shadow:var(--primary-text-glow)}
 .nav-links{display:flex;gap:24px;list-style:none}
 .nav-links a{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--cyan)}
-
-/* HERO */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:160px 48px 80px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(108,92,231,.2) 0%,transparent 60%),var(--bg)}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:160px 48px 80px;background:linear-gradient(180deg,#0a0818 0%,#0d0a22 100%);isolation:isolate}
+#hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 0%,rgba(140,90,255,0.28),transparent 55%),radial-gradient(circle at 75% 80%,rgba(0,200,255,0.12),transparent 60%)}
+.particle-field{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.15;transition:opacity 1.2s ease-out}
+.particle-field.active{opacity:.35}
+.pf-dot{position:absolute;width:2px;height:2px;border-radius:50%;background:#c7a0ff;box-shadow:0 0 4px 1px rgba(199,160,255,.5);animation:drift 14s linear infinite}
+.pf-dot:nth-child(1){top:15%;left:8%;animation-delay:0s}
+.pf-dot:nth-child(2){top:72%;left:20%;animation-delay:-2s;background:#00e0ff;box-shadow:0 0 4px 1px rgba(0,224,255,.5)}
+.pf-dot:nth-child(3){top:38%;left:82%;animation-delay:-5s}
+.pf-dot:nth-child(4){top:85%;left:68%;animation-delay:-7s;background:#fff;box-shadow:0 0 4px 1px rgba(255,255,255,.5)}
+.pf-dot:nth-child(5){top:22%;left:45%;animation-delay:-9s;background:#00e0ff;box-shadow:0 0 4px 1px rgba(0,224,255,.5)}
+.pf-dot:nth-child(6){top:58%;left:92%;animation-delay:-11s}
+.pf-dot:nth-child(7){top:48%;left:12%;animation-delay:-3s;background:#fff;box-shadow:0 0 4px 1px rgba(255,255,255,.5)}
+.pf-dot:nth-child(8){top:8%;left:65%;animation-delay:-6s;background:#00e0ff;box-shadow:0 0 4px 1px rgba(0,224,255,.5)}
+.pf-dot:nth-child(9){top:92%;left:38%;animation-delay:-1s}
+.pf-dot:nth-child(10){top:32%;left:28%;animation-delay:-8s;background:#fff;box-shadow:0 0 4px 1px rgba(255,255,255,.5)}
+.pf-dot:nth-child(11){top:65%;left:50%;animation-delay:-4s}
+.pf-dot:nth-child(12){top:78%;left:85%;animation-delay:-10s;background:#00e0ff;box-shadow:0 0 4px 1px rgba(0,224,255,.5)}
+@keyframes drift{0%{transform:translate(0,0)}25%{transform:translate(20px,-15px)}50%{transform:translate(-10px,-30px)}75%{transform:translate(-25px,-10px)}100%{transform:translate(0,0)}}
 .beams{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .beam{position:absolute;bottom:-10%;width:3px;transform-origin:bottom center}
 .beam:nth-child(1){left:15%;height:85%;background:linear-gradient(to top,var(--cyan),transparent);transform:rotate(-15deg);animation:bm 5s ease-in-out infinite}
@@ -50,62 +65,48 @@ nav.scrolled{background:rgba(3,3,8,.97);border-bottom:1px solid rgba(255,255,255
 @keyframes bp{0%,100%{border-color:rgba(232,67,147,.4)}50%{border-color:rgba(255,110,199,.8)}}
 .hbadge-dot{width:9px;height:9px;border-radius:50%;background:#ff6ec7;animation:dp 2s ease-in-out infinite;flex-shrink:0}
 @keyframes dp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
-.hsub{font-size:18px;color:var(--mu);max-width:680px;margin:0 auto;line-height:1.75}
-.htitle .h-small{display:block;font-size:clamp(20px,3.2vw,58px);letter-spacing:3px;margin-bottom:16px;opacity:.9;white-space:nowrap}
-.htitle .h-world{display:block;font-size:clamp(52px,9vw,128px);line-height:1}
-@media(max-width:768px){.htitle .h-small{font-size:clamp(15px,4.5vw,28px);white-space:normal}}
+.htitle{transition:transform .4s ease-out;font-family:'Exo 2',sans-serif;font-weight:900}
+.htitle.pulse{animation:headlinePulse 2.8s ease-in-out infinite}
+@keyframes headlinePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.htitle .h-small{display:block;font-family:'Exo 2',sans-serif;font-weight:900;font-size:clamp(20px,3.2vw,58px);letter-spacing:3px;margin-bottom:16px;opacity:.9;white-space:nowrap}
+.htitle .h-world{display:block;font-family:'Exo 2',sans-serif;font-weight:900;font-size:clamp(44px,7.2vw,92px);line-height:1;position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(0,0,0,0.6));letter-spacing:1px}
+@media(max-width:768px){.htitle .h-small{font-size:clamp(22px,6.5vw,38px);white-space:normal;letter-spacing:2px}.htitle .h-world{font-size:clamp(36px,10vw,56px);letter-spacing:1px}}
 .shimmer{background:linear-gradient(135deg,#fff 0%,#e0f0ff 15%,#fff 25%,var(--cyan) 35%,#fff 45%,#c0e8ff 55%,#fff 65%,var(--cyan) 75%,#fff 85%,#e8f8ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:shm 3s ease-in-out infinite}
 @keyframes shm{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.spin-star-wrap{display:inline-block;vertical-align:middle;width:clamp(50px,7vw,100px);height:clamp(50px,7vw,100px);animation:sp 7s linear infinite;filter:drop-shadow(0 0 16px #FFD000) drop-shadow(0 0 32px rgba(255,180,0,.6));position:relative}
+.world-wrap{position:relative;display:inline-block}
+.hero-star-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(130px,22vw,260px);height:clamp(130px,22vw,260px);pointer-events:none;z-index:-1}
+.hero-star-spin{width:100%;height:100%;animation:sp 40s linear infinite;opacity:.71}
 @keyframes sp{to{transform:rotate(360deg)}}
-/* Stardust particles */
-.spin-star-wrap::before,.spin-star-wrap::after{content:'✦';position:absolute;font-size:8px;animation:dustOrbit1 2.2s ease-in-out infinite;pointer-events:none;color:#FFE566;text-shadow:0 0 6px #FFD000}
-.spin-star-wrap::after{content:'✦';font-size:6px;animation:dustOrbit2 1.8s ease-in-out infinite .6s;color:#ff6ec7;text-shadow:0 0 6px #ff6ec7}
-@keyframes dustOrbit1{0%{transform:translate(0,0) scale(1);opacity:1}50%{transform:translate(60px,-30px) scale(0.4);opacity:0.7}100%{transform:translate(80px,10px) scale(0);opacity:0}}
-@keyframes dustOrbit2{0%{transform:translate(0,0) scale(1);opacity:1}50%{transform:translate(-50px,-40px) scale(0.5);opacity:0.6}100%{transform:translate(-70px,20px) scale(0);opacity:0}}
-/* Additional JS-free stardust via sibling spans injected below */
-.dust-particle{position:absolute;width:5px;height:5px;border-radius:50%;pointer-events:none;top:50%;left:50%;animation:dustFly 2s ease-out infinite}
-.dust-particle:nth-child(1){background:#FFE566;animation-delay:0s;--dx:55px;--dy:-35px}
-.dust-particle:nth-child(2){background:#ff6ec7;animation-delay:0.4s;--dx:-48px;--dy:-28px}
-.dust-particle:nth-child(3){background:#00cec9;animation-delay:0.8s;--dx:40px;--dy:42px}
-.dust-particle:nth-child(4){background:#fff;animation-delay:1.2s;--dx:-52px;--dy:30px}
-.dust-particle:nth-child(5){background:#FFD000;animation-delay:1.6s;--dx:30px;--dy:-55px}
-@keyframes dustFly{0%{transform:translate(-50%,-50%) scale(1.2);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(0);opacity:0}}
-/* Mobile: "Your crowd is already the story" — one line */
-.hpre{font-family:'Rajdhani',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:600;letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,.8);line-height:1;margin-bottom:12px;white-space:nowrap}
+.hero-spark{position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;pointer-events:none;animation:heroSparkFly 2.8s ease-out infinite;z-index:1}
+.hero-spark:nth-child(1){background:#c7a0ff;box-shadow:0 0 10px 2px rgba(199,160,255,.8);animation-delay:0s;--tx:90px;--ty:-40px}
+.hero-spark:nth-child(2){background:#00e0ff;box-shadow:0 0 10px 2px rgba(0,224,255,.8);animation-delay:.35s;--tx:-80px;--ty:-50px;width:3px;height:3px}
+.hero-spark:nth-child(3){background:#fff;box-shadow:0 0 10px 2px rgba(255,255,255,.9);animation-delay:.7s;--tx:70px;--ty:60px;width:3px;height:3px}
+.hero-spark:nth-child(4){background:#ff9ce8;box-shadow:0 0 10px 2px rgba(255,156,232,.7);animation-delay:1.05s;--tx:-70px;--ty:45px}
+.hero-spark:nth-child(5){background:#c7a0ff;box-shadow:0 0 10px 2px rgba(199,160,255,.7);animation-delay:1.4s;--tx:100px;--ty:15px;width:3px;height:3px}
+.hero-spark:nth-child(6){background:#00e0ff;box-shadow:0 0 10px 2px rgba(0,224,255,.7);animation-delay:1.75s;--tx:-95px;--ty:-15px}
+.hero-spark:nth-child(7){background:#fff;box-shadow:0 0 10px 2px rgba(255,255,255,.8);animation-delay:2.1s;--tx:40px;--ty:-70px;width:3px;height:3px}
+.hero-spark:nth-child(8){background:#b0e0ff;box-shadow:0 0 10px 2px rgba(176,224,255,.7);animation-delay:2.45s;--tx:-45px;--ty:75px;width:3px;height:3px}
+@keyframes heroSparkFly{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}15%{opacity:1;transform:translate(calc(-50% + (var(--tx) * .2)),calc(-50% + (var(--ty) * .2))) scale(1)}70%{opacity:.8}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(.2);opacity:0}}
+.hpre{font-family:'Exo 2',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:900;letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,.8);line-height:1;margin-bottom:12px;white-space:nowrap}
 @media(max-width:600px){.hpre{font-size:clamp(11px,3.8vw,20px);letter-spacing:3px}}
-.spin-star-svg{width:100%;height:100%}
-.sparkle-rays line,.sparkle-rays circle{animation:ray-pulse 2.4s ease-in-out infinite}
-.sparkle-rays line:nth-child(2),.sparkle-rays circle:nth-child(6){animation-delay:.3s}
-.sparkle-rays line:nth-child(3),.sparkle-rays circle:nth-child(7){animation-delay:.6s}
-.sparkle-rays line:nth-child(4),.sparkle-rays circle:nth-child(8){animation-delay:.9s}
-.sparkle-rays line:nth-child(5){animation-delay:.15s}
-.sparkle-rays line:nth-child(6){animation-delay:.45s}
-.sparkle-rays line:nth-child(7){animation-delay:.75s}
-.sparkle-rays line:nth-child(8){animation-delay:1.05s}
-@keyframes ray-pulse{0%,100%{opacity:.5}50%{opacity:1}}
-.hsub{font-size:18px;color:var(--mu);max-width:680px;margin:0 auto;line-height:1.75}
-
-/* LED ROPES */
+.hsub{font-size:18px;color:var(--mu);max-width:680px;margin:36px auto 0;line-height:1.75}
+.hsub-bold{font-weight:700;color:rgba(255,255,255,0.85);display:block;margin-bottom:8px}
+.mobile-br{display:none}
+@media(max-width:768px){.mobile-br{display:block;height:0.6em}}
 .led-rope{position:absolute;pointer-events:none;z-index:2}
 .led-rope-top{top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 0%,#ff00aa 8%,#ff6ec7 12%,#fff 16%,#00ffe0 22%,#00cec9 28%,#fff 32%,#ffee00 38%,#ff6600 44%,#fff 48%,#ff00aa 54%,#00ffe0 60%,#fff 64%,#ffee00 70%,#ff6ec7 76%,#00cec9 82%,#fff 86%,#ff00aa 92%,transparent 100%);animation:rope-glow 3s ease-in-out infinite;box-shadow:0 0 8px 2px rgba(255,110,199,.6),0 0 20px 4px rgba(0,206,201,.4)}
 .led-rope-bottom{bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 0%,#00cec9 8%,#fff 14%,#ffee00 20%,#ff6ec7 26%,#00ffe0 32%,#fff 38%,#ff00aa 44%,#ffee00 50%,#fff 56%,#00cec9 62%,#ff6ec7 68%,#fff 74%,#ff00aa 80%,#00ffe0 86%,transparent 100%);animation:rope-glow 3s ease-in-out infinite .8s;box-shadow:0 0 8px 2px rgba(0,206,201,.6),0 0 20px 4px rgba(255,110,199,.4)}
 @keyframes rope-glow{0%,100%{opacity:.7;filter:brightness(1)}50%{opacity:1;filter:brightness(1.4)}}
-
-/* BOOTH IMAGE */
-.booth-section{max-width:900px;margin:60px auto 0;text-align:center}
+.booth-section{max-width:900px;margin:60px auto 0;text-align:center;position:relative;z-index:10}
 .booth-section img{width:100%;max-width:800px;border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 80px rgba(0,0,0,.6)}
-
-/* SHARED */
-.container{max-width:1220px;margin:0 auto;padding:0 56px}
+.container{max-width:1220px;margin:0 auto;padding:0 56px;position:relative;z-index:1}
 .slabel{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;display:flex;align-items:center;gap:14px}
 .slabel::before{content:'';display:block;width:30px;height:1px;background:var(--cyan)}
 .stitle{font-family:'Exo 2',sans-serif;font-size:clamp(24px,3vw,46px);font-weight:800;line-height:1.15;margin-bottom:24px}
 .rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:translateY(0)}
-
-/* SOCIAL REACH */
-#social{padding:100px 0;background:#020208}
+#social{padding:100px 0;background:linear-gradient(180deg,#060912 0%,#080d1c 100%);position:relative;overflow:hidden;isolation:isolate}
+#social::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 18% 18%,rgba(100,120,200,0.08),transparent 55%),radial-gradient(circle at 82% 82%,rgba(60,140,180,0.05),transparent 60%)}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:20px;overflow:hidden;margin-top:2.5rem}
 .mblock{background:var(--bg);padding:50px 30px;text-align:center;position:relative}
 .mblock::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
@@ -118,38 +119,34 @@ nav.scrolled{background:rgba(3,3,8,.97);border-bottom:1px solid rgba(255,255,255
 .mblock:nth-child(3) .mnum{color:#E53935}
 .mlabel{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .cap-label{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(0,206,201,.55);margin-top:2.5rem;margin-bottom:8px}
-
-/* HOW IT WORKS */
-#how{padding:120px 0;background:var(--bg2);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#how{padding:120px 0;background:linear-gradient(180deg,#050a14 0%,#071020 100%);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%);position:relative;overflow:hidden;isolation:isolate}
+#how::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 85% 75%,rgba(80,130,200,0.09),transparent 55%),radial-gradient(circle at 15% 25%,rgba(100,90,170,0.05),transparent 60%)}
 .hiw-grid{display:grid;grid-template-columns:1fr;gap:0;align-items:start;margin-top:20px;max-width:800px}
 .step{display:flex;gap:22px;align-items:flex-start;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:default;transition:padding .3s}
 .step:last-child{border-bottom:none}
 .step:hover{padding-left:10px}
 .step:hover .snum{background:var(--cyan);color:#030308;border-color:var(--cyan)}
 .snum{width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(0,206,201,.4);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--cyan);flex-shrink:0;transition:all .3s}
+.sc{flex:1}
 .sc h3{font-family:'Exo 2',sans-serif;font-size:19px;font-weight:700;margin-bottom:8px;color:#fff}
 .sc p{font-size:16px;color:var(--mu);line-height:1.7}
-.flow-box{background:rgba(0,206,201,.03);border:1px solid rgba(0,206,201,.12);border-radius:24px;padding:24px 16px;position:sticky;top:120px}
-.flow-head{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(0,206,201,.55);margin-bottom:20px;text-align:center}
-.fnode{display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 12px;transition:all .3s;cursor:default}
-.fnode:hover{transform:translateX(6px)}
-.ni{width:48px;height:48px;min-width:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.nt h4{font-family:'Exo 2',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:2px}
-.nt p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.4}
-.farr{text-align:center;color:rgba(0,206,201,.35);font-size:14px;padding:3px 0}
-
-/* VIP LANYARD */
-#lanyard{padding:100px 0;background:#020208}
-.lanyard-grid{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:center;margin-top:20px}
-.lanyard-text p{font-size:17px;color:var(--mu);line-height:1.85}
-.lanyard-pics{display:flex;flex-direction:column;gap:24px;align-items:center}
-.lanyard-pics img{width:260px;border-radius:12px;mix-blend-mode:screen}
-.lanyard-pics img:nth-child(1){animation:lf 4s ease-in-out infinite}
-.lanyard-pics img:nth-child(2){animation:lf 4s ease-in-out infinite 1.5s}
-@keyframes lf{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(1deg)}}
-
-/* PARTNERSHIP */
-#partnership{padding:100px 0;background:var(--bg2)}
+.flow-step-badge{background:rgba(76,175,80,.12);border:1px solid rgba(76,175,80,.4);border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;margin-bottom:12px}
+.flow-step-badge span:first-child{font-size:20px}
+.flow-step-badge span:last-child{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.badge-gp{background:rgba(76,175,80,.12);border-color:rgba(76,175,80,.4)}
+.badge-gp span:last-child{color:#4CAF50}
+.badge-st{background:rgba(232,160,32,.12);border-color:rgba(232,160,32,.4)}
+.badge-st span:last-child{color:#e8a020}
+.badge-is{background:rgba(0,200,255,.12);border-color:rgba(0,200,255,.4)}
+.badge-is span:last-child{color:#00c8ff}
+.badge-bi{background:rgba(232,67,147,.12);border-color:rgba(232,67,147,.4)}
+.badge-bi span:last-child{color:var(--pink)}
+.badge-pg{background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.4)}
+.badge-pg span:last-child{color:var(--gold)}
+#lanyard{padding:100px 0;background:linear-gradient(180deg,#080716 0%,#0a0a1e 100%);position:relative;overflow:hidden;isolation:isolate}
+#lanyard::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 90% 50%,rgba(130,100,200,0.10),transparent 55%),radial-gradient(circle at 10% 50%,rgba(70,120,170,0.05),transparent 60%)}
+#partnership{padding:100px 0;background:linear-gradient(180deg,#0a0f1c 0%,#0d1428 100%);position:relative;overflow:hidden;isolation:isolate}
+#partnership::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 20%,rgba(120,150,210,0.14),transparent 55%),radial-gradient(circle at 50% 85%,rgba(120,110,200,0.08),transparent 60%)}
 .part-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:16px}
 .rcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:44px}
 .rcard.we{border-top:3px solid var(--cyan)}
@@ -166,49 +163,45 @@ nav.scrolled{background:rgba(3,3,8,.97);border-bottom:1px solid rgba(255,255,255
 .ritem{display:flex;align-items:center;gap:14px;font-size:16px;color:rgba(255,255,255,.82)}
 .rdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .we .rdot{background:var(--cyan)}
-.you-big{display:flex;align-items:center;gap:20px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.15);border-radius:18px;padding:18px 24px;margin-bottom:14px}
-.you-icon{font-size:32px}
-.you-word{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--gold)}
 .part-note{margin-top:40px;text-align:center;font-size:17px;color:rgba(255,255,255,.55);font-style:italic}
-
-/* CTA */
-#cta{padding:140px 0;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a001a,#180030 20%,#0c0020 40%,#001a28 65%,#000d08 85%,#0a0010)}
-.cta-orb1{position:absolute;top:50%;left:28%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(232,67,147,.18) 0%,transparent 70%);border-radius:50%;animation:orb 9s ease-in-out infinite}
-.cta-orb2{position:absolute;top:50%;left:72%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(0,206,201,.14) 0%,transparent 70%);border-radius:50%;animation:orb 11s ease-in-out infinite reverse}
-@keyframes orb{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.18)}}
+#cta{padding:140px 0;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a0820 0%,#060a18 100%);isolation:isolate}
+#cta::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(140,90,255,0.18),transparent 60%),radial-gradient(circle at 80% 80%,rgba(0,200,255,0.08),transparent 60%)}
 .cta-content{position:relative;z-index:1;text-align:center;max-width:880px;margin:0 auto}
 .cta-eye{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(232,160,32,.85);margin-bottom:22px}
 .cta-title{font-family:'Exo 2',sans-serif;font-size:clamp(26px,4.5vw,64px);font-weight:900;line-height:1.1;margin-bottom:40px}
-.btn-cta{display:inline-flex;align-items:center;gap:14px;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--pink);padding:22px 56px;border-radius:10px;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 8px 30px rgba(232,67,147,.4)}
-.btn-cta:hover{transform:translateY(-4px);box-shadow:0 22px 60px rgba(232,67,147,.55)}
+.spark-stage{position:relative;display:inline-block;padding:30px}
+.btn-cta{position:relative;z-index:2;display:inline-flex;align-items:center;gap:14px;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#fff;background:transparent;padding:22px 56px;border-radius:10px;border:1px solid rgba(140,90,255,0.6);cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:var(--primary-glow)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(140,90,255,0.7),0 0 50px rgba(0,200,255,0.35)}
+.cta-spark{position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:1;animation:ctaSparkFly 2.2s ease-out infinite}
+.cta-spark:nth-child(1){background:#c7a0ff;box-shadow:0 0 8px 2px rgba(199,160,255,.7);animation-delay:0s;--tx:140px;--ty:-40px}
+.cta-spark:nth-child(2){background:#00e0ff;box-shadow:0 0 8px 2px rgba(0,224,255,.7);animation-delay:.25s;--tx:-120px;--ty:-60px;width:3px;height:3px}
+.cta-spark:nth-child(3){background:#fff;box-shadow:0 0 8px 2px rgba(255,255,255,.7);animation-delay:.5s;--tx:100px;--ty:70px;width:2px;height:2px}
+.cta-spark:nth-child(4){background:#ff9ce8;box-shadow:0 0 8px 2px rgba(255,156,232,.6);animation-delay:.75s;--tx:-110px;--ty:50px}
+.cta-spark:nth-child(5){background:#c7a0ff;box-shadow:0 0 8px 2px rgba(199,160,255,.6);animation-delay:1s;--tx:160px;--ty:20px;width:3px;height:3px}
+.cta-spark:nth-child(6){background:#00e0ff;box-shadow:0 0 8px 2px rgba(0,224,255,.6);animation-delay:1.25s;--tx:-150px;--ty:-20px}
+.cta-spark:nth-child(7){background:#fff;box-shadow:0 0 8px 2px rgba(255,255,255,.7);animation-delay:1.5s;--tx:60px;--ty:-80px;width:2px;height:2px}
+.cta-spark:nth-child(8){background:#ffd26e;box-shadow:0 0 8px 2px rgba(255,210,110,.6);animation-delay:1.75s;--tx:-70px;--ty:85px;width:3px;height:3px}
+@keyframes ctaSparkFly{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}15%{opacity:1;transform:translate(calc(-50% + (var(--tx) * .2)),calc(-50% + (var(--ty) * .2))) scale(1)}70%{opacity:.8}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(.2);opacity:0}}
 .cta-note{margin-top:30px;font-size:15px;color:rgba(255,255,255,.32);letter-spacing:1px}
-
-/* FOOTER */
 footer{padding:40px 56px;border-top:1px solid rgba(255,255,255,.06);background:var(--bg);display:flex;align-items:center;justify-content:space-between}
 footer .fmail{font-size:16px;color:rgba(0,206,201,.45);font-family:'Rajdhani',sans-serif;letter-spacing:1px}
 footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
-
-/* CONTACT MODAL */
-#contact-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:20px}
+#contact-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
 #contact-modal.open{display:flex}
-#contact-form-box{background:linear-gradient(135deg,#0d0d2a 0%,#0a0a1a 50%,#0d1a1a 100%);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:48px 52px;max-width:620px;width:100%;position:relative;overflow:hidden;box-shadow:0 0 100px rgba(232,67,147,.35),0 0 60px rgba(0,206,201,.15),0 30px 80px rgba(0,0,0,.8)}
-.cf-close{position:absolute;top:20px;right:24px;background:none;border:none;color:rgba(255,255,255,.4);font-size:24px;cursor:pointer;z-index:2;font-family:'Exo 2',sans-serif}
+#contact-form-box{background:linear-gradient(135deg,#0d0d2a 0%,#0a0a1a 50%,#0d1a1a 100%);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:40px 44px;max-width:560px;width:100%;position:relative;overflow:hidden;box-shadow:0 0 100px rgba(232,67,147,.35),0 0 60px rgba(0,206,201,.15),0 30px 80px rgba(0,0,0,.8);max-height:calc(100vh - 40px);overflow-y:auto}
+.cf-close{position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,.4);font-size:24px;cursor:pointer;z-index:2;font-family:'Exo 2',sans-serif}
 .cf-close:hover{color:#fff}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .cf-field{margin-bottom:12px}
-.cf-field label{display:block;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px}
-.cf-field input,.cf-field textarea{width:100%;font-family:'Exo 2',sans-serif;font-size:15px;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;outline:none;transition:border-color .3s}
-.cf-field input:focus,.cf-field textarea:focus{border-color:var(--pink)}
-.cf-field textarea{min-height:100px;resize:vertical}
-.cf-submit{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--pink);border:none;padding:16px 40px;border-radius:10px;cursor:pointer;width:100%;margin-top:8px;box-shadow:0 8px 30px rgba(232,67,147,.4);transition:transform .3s,box-shadow .3s}
-.cf-submit:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(232,67,147,.5)}
+.cf-field label{display:block;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px}
+.cf-field input{width:100%;font-family:'Exo 2',sans-serif;font-size:15px;padding:12px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#fff;outline:none;transition:border-color .3s}
+.cf-field input:focus{border-color:var(--pink)}
+.cf-submit{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(140,90,255,0.6);padding:16px 40px;border-radius:10px;cursor:pointer;width:100%;margin-top:12px;box-shadow:var(--primary-glow);transition:transform .3s,box-shadow .3s}
+.cf-submit:hover{transform:translateY(-3px);box-shadow:0 0 24px rgba(140,90,255,0.7),0 0 50px rgba(0,200,255,0.35)}
 .cf-success{text-align:center;padding:40px 0;display:none}
 .cf-success h3{font-family:'Exo 2',sans-serif;font-size:24px;font-weight:800;color:var(--cyan);margin-bottom:12px}
 .modal-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
 .modal-orb-1{top:-60px;left:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,67,147,.25) 0%,transparent 70%)}
 .modal-orb-2{bottom:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,206,201,.2) 0%,transparent 70%)}
-
-/* SECTION DIVIDER LED ROPE */
 .led-divider{display:block;width:100%;height:4px;background:linear-gradient(90deg,transparent 0%,#ff00aa 8%,#ff6ec7 14%,#fff 18%,#00ffe0 24%,#00cec9 30%,#fff 34%,#ffee00 40%,#ff6600 46%,#fff 50%,#ff00aa 56%,#00ffe0 62%,#fff 66%,#ffee00 72%,#ff6ec7 78%,#00cec9 84%,#fff 88%,#ff00aa 94%,transparent 100%);animation:rope-glow 3s ease-in-out infinite;box-shadow:0 0 8px 2px rgba(255,110,199,.5),0 0 18px 3px rgba(0,206,201,.35);flex-shrink:0}
 .lanyard-text-full{max-width:800px;margin-bottom:48px}
 .lanyard-text-full p{font-size:17px;color:var(--mu);line-height:1.85}
@@ -217,10 +210,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 .gallery-item{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s;background:#020208}
 .gallery-item:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 32px 80px rgba(232,67,147,.25),0 0 40px rgba(0,206,201,.15)}
 .gallery-img-side{width:100%;height:520px;object-fit:contain;display:block}
-.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(3,3,8,.95) 0%,transparent 100%);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65)}
 @media(max-width:768px){.gallery-duo{grid-template-columns:1fr;gap:20px}.gallery-img-side{height:380px}}
-
-
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nav-links{display:none}
@@ -234,21 +224,24 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
   .mblock::after{display:none}
   #how{padding:70px 0;clip-path:none}
   .hiw-grid{grid-template-columns:1fr;gap:48px}
-  .lanyard-grid{grid-template-columns:1fr;gap:40px}
-  .lanyard-pics img{width:200px}
+  .step{display:grid;grid-template-columns:52px 1fr;grid-template-rows:auto auto auto;column-gap:18px;row-gap:4px;padding:26px 0}
+  .step:hover{padding-left:0}
+  .snum{grid-column:1;grid-row:1 / 3}
+  .sc{display:contents}
+  .sc .flow-step-badge{grid-column:2;grid-row:1;justify-self:start;margin-bottom:0}
+  .sc h3{grid-column:2;grid-row:2;margin-bottom:0;font-size:17px}
+  .sc p{grid-column:1 / -1;grid-row:3;margin-top:12px}
   .part-grid{grid-template-columns:1fr}
   #cta{padding:80px 0}
-  .btn-cta{width:100%;justify-content:center;padding:18px 32px}
+  .btn-cta{width:auto;justify-content:center;padding:18px 32px}
+  .spark-stage{padding:20px}
   footer{flex-direction:column;gap:12px;align-items:center;padding:36px 20px}
-  #contact-form-box{padding:32px 24px}
-  .cf-row{grid-template-columns:1fr}
+  #contact-form-box{padding:28px 20px}
   .beams{display:none}
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="logo">
     <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg>
@@ -261,65 +254,78 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <a href="#partnership">Partnership</a>
   </div>
 </nav>
-
-<!-- HERO -->
 <section id="hero">
   <div class="led-rope led-rope-top"></div>
   <div class="led-rope led-rope-bottom"></div>
+  <div class="particle-field" id="particle-field">
+    <span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span>
+    <span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span>
+    <span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span><span class="pf-dot"></span>
+  </div>
   <div class="beams"><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hbadge"><div class="hbadge-dot"></div><span>Festival Culture. Live.</span></div>
     <p class="hpre">Your crowd is already the story.</p>
-    <h1 class="htitle">
+    <h1 class="htitle" id="htitle">
       <span class="h-small shimmer">BRING THEM INSIDE</span>
-      <span class="h-world shimmer">YOUR WORLD</span>       <span class="spin-star-wrap">
-        <span class="dust-particle"></span>
-        <span class="dust-particle"></span>
-        <span class="dust-particle"></span>
-        <span class="dust-particle"></span>
-        <span class="dust-particle"></span>
-        <svg class="spin-star-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <!-- sparkle rays -->
-          <g class="sparkle-rays">
-            <line x1="50" y1="2" x2="50" y2="18" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-            <line x1="50" y1="82" x2="50" y2="98" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-            <line x1="2" y1="50" x2="18" y2="50" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-            <line x1="82" y1="50" x2="98" y2="50" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-            <line x1="14" y1="14" x2="25" y2="25" stroke="#FFD000" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-            <line x1="75" y1="75" x2="86" y2="86" stroke="#FFD000" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-            <line x1="86" y1="14" x2="75" y2="25" stroke="#FFD000" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-            <line x1="14" y1="86" x2="25" y2="75" stroke="#FFD000" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-            <!-- small sparkle dots at ray tips -->
-            <circle cx="50" cy="6" r="2.5" fill="#fff" opacity="0.85"/>
-            <circle cx="50" cy="94" r="2.5" fill="#fff" opacity="0.85"/>
-            <circle cx="6" cy="50" r="2.5" fill="#fff" opacity="0.85"/>
-            <circle cx="94" cy="50" r="2.5" fill="#fff" opacity="0.85"/>
-          </g>
-          <!-- 4-point star body -->
-          <path d="M50 18 L55 44 L82 50 L55 56 L50 82 L45 56 L18 50 L45 44 Z" fill="url(#starGrad)" filter="url(#starGlow)"/>
-          <defs>
-            <radialGradient id="starGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff9c4"/>
-              <stop offset="40%" stop-color="#FFE566"/>
-              <stop offset="100%" stop-color="#FFB800"/>
-            </radialGradient>
-            <filter id="starGlow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-        </svg>
+      <span class="world-wrap">
+        <span class="hero-star-wrap">
+          <span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span>
+          <span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span>
+          <svg class="hero-star-spin" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(220,240,255,0.45)"/>
+                <stop offset="40%" stop-color="rgba(180,210,255,0.18)"/>
+                <stop offset="100%" stop-color="rgba(180,210,255,0)"/>
+              </radialGradient>
+              <linearGradient id="facetLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="40%" stop-color="#e8f4ff"/>
+                <stop offset="100%" stop-color="#a8c8e8"/>
+              </linearGradient>
+              <linearGradient id="facetDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6a8aa8"/>
+                <stop offset="60%" stop-color="#3d5878"/>
+                <stop offset="100%" stop-color="#1a2940"/>
+              </linearGradient>
+              <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+                <stop offset="50%" stop-color="rgba(220,240,255,0.6)"/>
+                <stop offset="100%" stop-color="rgba(180,210,255,0)"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="100" r="95" fill="url(#haloGrad)"/>
+            <polygon points="100,100 88,84 100,14" fill="url(#facetLight)"/>
+            <polygon points="100,100 112,84 100,14" fill="url(#facetDark)"/>
+            <polygon points="100,100 88,84 158,42" fill="url(#facetLight)"/>
+            <polygon points="100,100 116,88 158,42" fill="url(#facetDark)"/>
+            <polygon points="100,100 116,88 186,100" fill="url(#facetLight)"/>
+            <polygon points="100,100 116,112 186,100" fill="url(#facetDark)"/>
+            <polygon points="100,100 116,112 158,158" fill="url(#facetLight)"/>
+            <polygon points="100,100 112,116 158,158" fill="url(#facetDark)"/>
+            <polygon points="100,100 112,116 100,186" fill="url(#facetLight)"/>
+            <polygon points="100,100 88,116 100,186" fill="url(#facetDark)"/>
+            <polygon points="100,100 88,116 42,158" fill="url(#facetLight)"/>
+            <polygon points="100,100 84,112 42,158" fill="url(#facetDark)"/>
+            <polygon points="100,100 84,112 14,100" fill="url(#facetLight)"/>
+            <polygon points="100,100 84,88 14,100" fill="url(#facetDark)"/>
+            <polygon points="100,100 84,88 42,42" fill="url(#facetLight)"/>
+            <polygon points="100,100 88,84 42,42" fill="url(#facetDark)"/>
+            <circle cx="100" cy="100" r="12" fill="url(#coreGrad)"/>
+            <circle cx="100" cy="100" r="3" fill="#ffffff"/>
+          </svg>
+        </span>
+        <span class="h-world shimmer">YOUR WORLD</span>
       </span>
     </h1>
-    <p class="hsub">Every soul steps in as a face in the crowd. Everyone comes out a star. Placed inside your official festival artwork, delivered to their phone in seconds, and shared to the world tagging your socials. Every share becomes a ripple. Every smile, your signal.</p>
+    <p class="hsub"><span class="hsub-bold">Every soul steps in as a face in the crowd. Everyone comes out a star.</span>Placed inside your official festival artwork, delivered to their phone in seconds, and shared to the world tagging your socials. Every share becomes a ripple. Every smile, your signal.</p>
     <div class="booth-section">
       <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup">
     </div>
   </div>
 </section>
-
-<!-- SOCIAL REACH -->
 <div class="led-divider"></div>
 <section id="social">
   <div class="container">
@@ -334,8 +340,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     </div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
 <div class="led-divider"></div>
 <section id="how">
   <div class="container">
@@ -346,7 +350,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
         <div class="step">
           <div class="snum">01</div>
           <div class="sc">
-            <div class="flow-step-badge" style="background:rgba(76,175,80,.12);border:1px solid rgba(76,175,80,.4);border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-size:20px">💰</span><span style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4CAF50">Guests Pay</span></div>
+            <div class="flow-step-badge badge-gp"><span>💰</span><span>Guests Pay</span></div>
             <h3>Guests Fund the Whole Thing</h3>
             <p>with a modest per-experience fee. We put 1000 discount passes out at our own cost, a $10,000 investment to light the fuse. 1000 branded posts hit socials.</p>
           </div>
@@ -354,7 +358,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
         <div class="step">
           <div class="snum">02</div>
           <div class="sc">
-            <div class="flow-step-badge" style="background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.4);border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-size:20px">📸</span><span style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e8a020">Star Treatment</span></div>
+            <div class="flow-step-badge badge-st"><span>📸</span><span>Star Treatment</span></div>
             <h3>The Star Treatment</h3>
             <p>The tribe walks the red carpet into a professional photography studio lit by seven pro-grade lights. A full-length mirror faces them, and behind it, a high-end modelling camera captures them looking at their best self. A green screen drops the real world away and AI builds a new one around them, wrapped in the event's own branding. Pure photoshoot. Pure magic.</p>
           </div>
@@ -362,34 +366,31 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
         <div class="step">
           <div class="snum">03</div>
           <div class="sc">
-            <div class="flow-step-badge" style="background:rgba(0,200,255,.12);border:1px solid rgba(0,200,255,.4);border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-size:20px">📡</span><span style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00c8ff">Instant Share</span></div>
+            <div class="flow-step-badge badge-is"><span>📡</span><span>Instant Share</span></div>
             <h3>Word Spreads Itself</h3>
             <p>To make sure it does, SparkStation provides a dedicated StarLink HotSpot so everyone can share their photos live, the second they step out. Queues form naturally. The buzz is on.</p>
           </div>
         </div>
-        <div class="step" style="border-bottom:none">
+        <div class="step">
           <div class="snum">04</div>
           <div class="sc">
-            <div class="flow-step-badge" style="background:rgba(232,67,147,.12);border:1px solid rgba(232,67,147,.4);border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-size:20px">🔥</span><span style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pink)">Buzz Ignites</span></div>
+            <div class="flow-step-badge badge-bi"><span>🔥</span><span>Buzz Ignites</span></div>
             <h3>The Bottom Line</h3>
             <p>A full photography studio, dedicated crew, AI system, StarLink WiFi, printed LED lanyards, and a content engine worth $4,500 a day. Your cost: zero. Your risk: zero. Your tribe walks away lit up and all you did was say YES.</p>
           </div>
         </div>
-        <!-- Pure Gain — closes section 04 -->
-        <div class="pure-gain-box rv" style="margin-top:32px;background:rgba(255,215,0,.08);border:1.5px solid rgba(255,215,0,.35);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:20px">
-          <div style="width:56px;height:56px;min-width:56px;border-radius:14px;background:rgba(255,215,0,.18);display:flex;align-items:center;justify-content:center;font-size:28px">✶</div>
-          <div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Pure Gain</div>
-            <div style="font-size:16px;color:rgba(255,255,255,.75)">Zero cost to you — your tribe walks away lit, your socials spark, your brand lives on.</div>
+        <div class="step" style="border-bottom:none">
+          <div class="snum">05</div>
+          <div class="sc">
+            <div class="flow-step-badge badge-pg"><span>✶</span><span>Pure Gain</span></div>
+            <h3>The Takeaway</h3>
+            <p>Zero cost to you — your tribe walks away lit, your socials spark, your brand lives on.</p>
           </div>
         </div>
       </div>
-      <div style="display:none"></div>
     </div>
   </div>
 </section>
-
-<!-- VIP LANYARD -->
 <div class="led-divider"></div>
 <section id="lanyard">
   <div class="container">
@@ -399,7 +400,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
       <p>The moment the photoshoot wraps, a full-size print, fresh off a pro-grade Kodak, slides into a card holder hanging from a pulsing VIP LED lanyard glowing around their neck. They walk out lit up, their photo locked inside the event's visual world, sparking smiles wherever they go.</p>
       <p style="margin-top:1.5rem">And months after, while every photo on their phone sinks into a camera roll long gone, this one lives in their bedroom. Hanging from a mirror. Sitting on a shelf. Staying in the real world. A friend walks in, spots it, asks the story. And just like that, the magic of that gathering is alive again in someone's living room, long after the last beat dropped. That's the SparkStation Magick.</p>
     </div>
-    <!-- Photo gallery — all 3 images -->
     <div class="photo-gallery rv">
       <div class="gallery-duo">
         <div class="gallery-item">
@@ -412,8 +412,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     </div>
   </div>
 </section>
-
-<!-- PARTNERSHIP -->
 <div class="led-divider"></div>
 <section id="partnership">
   <div class="container">
@@ -444,31 +442,26 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <p class="part-note rv">We handle everything from setup to packdown. You enjoy the results.</p>
   </div>
 </section>
-
-<!-- CTA -->
 <div class="led-divider"></div>
 <section id="cta">
-  <div class="cta-orb1"></div><div class="cta-orb2"></div>
-  <div class="container">
-    <div class="cta-content rv">
-      <p class="cta-eye">Ready When You Are</p>
-      <h2 class="cta-title">Zero Cost.<br><span class="shimmer" style="font-size:inherit">Zero Risk.</span><br>All Yours.</h2>
+  <div class="cta-content rv">
+    <p class="cta-eye">Ready When You Are</p>
+    <h2 class="cta-title">Zero Cost.<br><span class="shimmer" style="font-size:inherit">Zero Risk.</span><br>All Yours.</h2>
+    <div class="spark-stage">
+      <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
+      <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation Home</button>
-      <p class="cta-note">Setup in under 2 hours · 4,000+ gatherings</p>
     </div>
+    <p class="cta-note">Setup in under 2 hours · 4,000+ gatherings</p>
   </div>
 </section>
-
-<!-- FOOTER -->
 <div class="led-divider"></div>
 <footer>
   <a href="#hero" class="logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></a>
-  <span class="fmail">SparkStationPro@outlook.com</span>
+  <span class="fmail">SparkStationPro@google.com</span>
   <span class="fcopy">© 2026 SparkStation</span>
 </footer>
 <div class="led-divider"></div>
-
-<!-- CONTACT MODAL -->
 <div id="contact-modal">
   <div id="contact-form-box">
     <div class="modal-orb modal-orb-1"></div>
@@ -477,21 +470,16 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <div style="position:relative;z-index:1">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg>
-        <h2 style="font-family:'Exo 2',sans-serif;font-size:26px;font-weight:800">Bring <span style="color:#e84393">SparkStation</span> Home</h2>
+        <h2 style="font-family:'Exo 2',sans-serif;font-size:24px;font-weight:800">Bring <span style="color:#e84393">SparkStation</span> Home</h2>
       </div>
-      <p style="font-size:15px;color:rgba(255,255,255,.55);margin-bottom:16px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@outlook.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@outlook.com</a></p>
-      <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:24px;border-radius:2px"></div>
+      <p style="font-size:14px;color:rgba(255,255,255,.55);margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@google.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@google.com</a></p>
+      <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:18px;border-radius:2px"></div>
       <div id="cf-form-inner">
-        <div class="cf-row">
-          <div class="cf-field"><label>First Name</label><input type="text" placeholder="Your first name"></div>
-          <div class="cf-field"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
-        </div>
+        <div class="cf-field"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
         <div class="cf-field"><label>Position / Role</label><input type="text" placeholder="e.g. Festival Director"></div>
         <div class="cf-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:15px;color:rgba(255,255,255,.35);letter-spacing:0">(optional)</span></label><input type="tel" placeholder="+61 000 000 000"></div>
-        <div class="cf-field"><label>Event Name</label><input type="text" placeholder="Name of your event"></div>
+        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:14px;color:rgba(255,255,255,.35);letter-spacing:0">(optional)</span></label><input type="tel" placeholder="+61 000 000 000"></div>
         <div class="cf-field"><label>Event Website</label><input type="url" placeholder="https://yourevent.com"></div>
-        <div class="cf-field"><label>Tell Us About Your Event</label><textarea placeholder="Any details about your event, location, vibe, audience size..."></textarea></div>
         <button class="cf-submit" onclick="submitContactForm()">✶ Send My Request</button>
       </div>
       <div class="cf-success" id="cf-success">
@@ -501,17 +489,11 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     </div>
   </div>
 </div>
-
 <script>
-// Nav scroll
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
-
-// Reveal on scroll
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-// Counter animation
 function animCount(el){
   const tgt=parseInt(el.dataset.target);
   const sfx=el.dataset.suffix||'';
@@ -528,8 +510,17 @@ function animCount(el){
 }
 const cio=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';animCount(e.target)}})},{threshold:.5});
 document.querySelectorAll('[data-target]').forEach(el=>cio.observe(el));
-
-// Contact form
+let heroActivated=false;
+function activateHero(){
+  if(heroActivated)return;
+  heroActivated=true;
+  const pf=document.getElementById('particle-field');
+  const ht=document.getElementById('htitle');
+  if(pf)pf.classList.add('active');
+  if(ht)ht.classList.add('pulse');
+}
+setTimeout(activateHero,2000);
+window.addEventListener('scroll',activateHero,{once:true,passive:true});
 function openContactForm(){
   document.getElementById('contact-modal').classList.add('open');
   document.body.style.overflow='hidden';
