@@ -7,13 +7,13 @@
 <meta name="description" content="Turn every guest into a star. SparkStation drops your festival's crowd inside your own visual world — delivered to their phone, shared to yours. Zero cost. Zero risk.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2L28 9V23L16 30L4 23V9L16 2Z' stroke='%23e84393' stroke-width='1.5' fill='%23e84393' fill-opacity='0.08'/%3E%3Cpath d='M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z' fill='%23e84393'/%3E%3C/svg%3E">
 <meta property="og:title" content="SparkStation — Festival Culture. Live.">
-<meta property="og:description" content="Bring your crowd inside your world. Zero cost. Zero risk. Built for festivals of 4,000+.">
+<meta property="og:description" content="Bring your crowd inside your world. Zero cost. Zero risk. Built for festivals of 3,000+.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sparkstationpro.github.io/sparkstationpro/">
 <meta property="og:image" content="https://sparkstationpro.github.io/sparkstationpro/images/sparkstation-setup.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SparkStation — Festival Culture. Live.">
-<meta name="twitter:description" content="Bring your crowd inside your world. Zero cost. Zero risk. Built for festivals of 4,000+.">
+<meta name="twitter:description" content="Bring your crowd inside your world. Zero cost. Zero risk. Built for festivals of 3,000+.">
 <meta name="twitter:image" content="https://sparkstationpro.github.io/sparkstationpro/images/sparkstation-setup.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -103,13 +103,15 @@ nav.scrolled{background:rgba(3,3,8,.98)}
 .hsub{font-size:18px;color:var(--mu);max-width:680px;margin:36px auto 0;line-height:1.75}
 .hsub-bold{font-weight:700;color:rgba(255,255,255,0.85);display:block;margin-bottom:8px}
 .mobile-br{display:none}
-@media(max-width:768px){.mobile-br{display:block;height:0.6em}}
+.mobile-only{display:none}
+.desktop-only{display:inline}
+@media(max-width:768px){.mobile-br{display:block;height:0.6em}.mobile-only{display:inline}.desktop-only{display:none}}
 .led-rope{position:absolute;pointer-events:none;z-index:2}
 .led-rope-top{top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 0%,#ff00aa 8%,#ff6ec7 12%,#fff 16%,#00ffe0 22%,#00cec9 28%,#fff 32%,#ffee00 38%,#ff6600 44%,#fff 48%,#ff00aa 54%,#00ffe0 60%,#fff 64%,#ffee00 70%,#ff6ec7 76%,#00cec9 82%,#fff 86%,#ff00aa 92%,transparent 100%);animation:rope-glow 3s ease-in-out infinite;box-shadow:0 0 8px 2px rgba(255,110,199,.6),0 0 20px 4px rgba(0,206,201,.4)}
 .led-rope-bottom{bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 0%,#00cec9 8%,#fff 14%,#ffee00 20%,#ff6ec7 26%,#00ffe0 32%,#fff 38%,#ff00aa 44%,#ffee00 50%,#fff 56%,#00cec9 62%,#ff6ec7 68%,#fff 74%,#ff00aa 80%,#00ffe0 86%,transparent 100%);animation:rope-glow 3s ease-in-out infinite .8s;box-shadow:0 0 8px 2px rgba(0,206,201,.6),0 0 20px 4px rgba(255,110,199,.4)}
 @keyframes rope-glow{0%,100%{opacity:.7;filter:brightness(1)}50%{opacity:1;filter:brightness(1.4)}}
-.booth-section{max-width:900px;margin:60px auto 0;text-align:center;position:relative;z-index:10}
-.booth-section img{width:100%;max-width:800px;border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 80px rgba(0,0,0,.6)}
+.booth-section{max-width:800px;margin:60px auto 0;text-align:center;position:relative;z-index:10}
+.booth-section img{width:100%;max-width:800px;margin:0 auto;border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 80px rgba(0,0,0,.6)}
 .container{max-width:1220px;margin:0 auto;padding:0 56px;position:relative;z-index:1}
 .slabel{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;display:flex;align-items:center;gap:14px}
 .slabel::before{content:'';display:block;width:30px;height:1px;background:var(--cyan)}
@@ -218,11 +220,11 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 .lanyard-text-full{max-width:800px;margin-bottom:48px}
 .lanyard-text-full p{font-size:17px;color:var(--mu);line-height:1.85}
 .photo-gallery{margin-top:48px}
-.gallery-duo{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.gallery-duo{display:grid;grid-template-columns:1fr;gap:28px;max-width:620px;margin:0 auto}
 .gallery-item{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s;background:#020208}
 .gallery-item:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 32px 80px rgba(232,67,147,.25),0 0 40px rgba(0,206,201,.15)}
 .gallery-img-side{width:100%;height:520px;object-fit:contain;display:block}
-@media(max-width:768px){.gallery-duo{grid-template-columns:1fr;gap:20px}.gallery-img-side{height:380px}}
+@media(max-width:768px){.gallery-duo{gap:20px}.gallery-img-side{height:380px}}
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nav-links{display:none}
@@ -244,6 +246,9 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
   .sc h3{grid-column:1 / -1;grid-row:2;margin-top:14px;margin-bottom:0;font-size:17px}
   .sc p{grid-column:1 / -1;grid-row:3;margin-top:8px}
   .part-grid{grid-template-columns:1fr}
+  .rcard{padding:28px 20px}
+  .ritem{gap:10px;font-size:14px;white-space:nowrap}
+  .rdot{width:6px;height:6px}
   #cta{padding:80px 0}
   .btn-cta{width:auto;justify-content:center;padding:18px 32px}
   .spark-stage{padding:20px}
@@ -332,7 +337,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
         <span class="h-world shimmer">YOUR WORLD</span>
       </span>
     </h1>
-    <p class="hsub"><span class="hsub-bold">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span>Placed inside your official festival artwork, delivered to their phone in seconds, and shared to the world tagging your socials. Every share becomes a ripple.</p>
+    <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span>Placed inside your official festival artwork, delivered to their phone in seconds, and shared to the world tagging your socials. Every share becomes a ripple.</p>
     <div class="booth-section">
       <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup">
     </div>
@@ -342,8 +347,8 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 <section id="social">
   <div class="container">
     <p class="slabel rv">Social Reach</p>
-    <h2 class="stitle rv">The O.S.M. HUB <span style="color:rgba(0,206,201,.5);font-weight:300">—</span> <span style="font-size:0.75em;font-weight:400;letter-spacing:1px"><strong style="font-weight:800;text-transform:uppercase">O</strong>rganic <strong style="font-weight:800;text-transform:uppercase">S</strong>ocial <strong style="font-weight:800;text-transform:uppercase">M</strong>edia HUB</span></h2>
-    <p class="rv" style="font-size:17px;color:var(--mu);line-height:1.85">SparkStation is the studio. The O.S.M. HUB is the engine behind it, an automated system that converts every photoshoot into organic social media presence, spreading through real people to their real networks. Your own crowd carries your visuals outward. Every post, your billboard.<br><span style="display:inline-block;margin-top:10px;font-weight:700;color:rgba(255,255,255,0.9)">Every smile, a WIN.</span></p>
+    <h2 class="stitle rv">The O.S.M. HUB <span class="mobile-only" style="display:block;margin-top:8px"></span><span style="font-size:0.75em;font-weight:400;letter-spacing:1px"><strong style="font-weight:800;text-transform:uppercase">O</strong>rganic <strong style="font-weight:800;text-transform:uppercase">S</strong>ocial <strong style="font-weight:800;text-transform:uppercase">M</strong>edia HUB</span></h2>
+    <p class="rv" style="font-size:17px;color:var(--mu);line-height:1.85">SparkStation is the studio. The O.S.M. HUB is the engine behind it, an automated system that converts every photoshoot into organic social media presence, spreading through real people to their real networks. Your own crowd carries your visuals outward. Every post, your billboard. <strong style="font-weight:700;color:rgba(255,255,255,0.9)">Every smile, a WIN.</strong></p>
     <p class="cap-label rv">Max Full-Day Capacity:</p>
     <div class="mgrid rv">
       <div class="mblock"><span class="micon">📸</span><span class="mnum" data-target="300">0</span><span class="mlabel">Real Moments Captured</span></div>
@@ -418,9 +423,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
         <div class="gallery-item">
           <img src="images/vip-lanyard-splendour.jpg" alt="VIP Lanyard" class="gallery-img-side">
         </div>
-        <div class="gallery-item">
-          <img src="images/splendour-lanyard.jpg" alt="VIP Lanyard" class="gallery-img-side">
-        </div>
       </div>
     </div>
   </div>
@@ -429,7 +431,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 <section id="partnership">
   <div class="container">
     <p class="slabel rv">Partnership Model</p>
-    <h2 class="stitle rv">What We Bring. What You Bring.</h2>
     <div class="part-grid rv">
       <div class="rcard we">
         <div class="rcard-hdr"><div class="ricon">⚡</div><div><h3>We Provide</h3><p class="sub">The full SparkStation experience</p></div></div>
@@ -440,8 +441,8 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
           <div class="ritem"><span class="rdot"></span>Pro-grade Kodak photo prints</div>
           <div class="ritem"><span class="rdot"></span>Dedicated StarLink HotSpot</div>
           <div class="ritem"><span class="rdot"></span>Custom printed VIP LED lanyards</div>
-          <div class="ritem"><span class="rdot"></span>Print-on-demand link per participant</div>
-          <div class="ritem"><span class="rdot"></span>Full gallery of all portraits for your socials</div>
+          <div class="ritem"><span class="rdot"></span>Print-on-demand link per guest</div>
+          <div class="ritem"><span class="rdot"></span>Gallery of all portraits provided for your socials</div>
         </div>
       </div>
       <div class="rcard you">
@@ -464,7 +465,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation Home</button>
     </div>
-    <p class="cta-note">Setup in under 2 hours · Built for gatherings of 4,000+</p>
+    <p class="cta-note">Setup in under 2 hours · Built for gatherings of 3,000+</p>
   </div>
 </section>
 <div class="led-divider"></div>
