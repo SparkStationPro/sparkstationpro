@@ -308,6 +308,7 @@ footer .fcopy{font-size:15px;color:#fff}
 .hpre .r-green{font-size:calc((2*var(--p) + var(--w))/3)}
 .htitle .h-small.r-yellow{font-size:calc((var(--p) + 2*var(--w))/3)}
 .htitle .h-small.r-yellow,.hpre .r-green{white-space:nowrap}
+.htitle{display:flow-root}
 </style>
 </head>
 <body>
@@ -659,7 +660,16 @@ w.appendChild(e);}})();
 <script>
 (function(){function tw(el){var r=document.createRange();r.selectNodeContents(el);return r.getBoundingClientRect().width}
 function fit(){var w=document.querySelector('.h-world'),g=document.querySelector('.r-green'),y=document.querySelector('.r-yellow');if(!w||!g||!y)return;
-var target=tw(w);[g,y].forEach(function(e){e.style.fontSize='';var cur=parseFloat(getComputedStyle(e).fontSize);for(var i=0;i<3;i++){cur=cur*target/tw(e);e.style.fontSize=cur+'px'}})}
+var target=tw(w);[g,y].forEach(function(e){e.style.fontSize='';var cur=parseFloat(getComputedStyle(e).fontSize);for(var i=0;i<3;i++){cur=cur*target/tw(e);e.style.fontSize=cur+'px'}});gaps()}
+var cv=document.createElement('canvas').getContext('2d');
+function ink(el){var n=null,it=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);while(it.nextNode()){if(it.currentNode.nodeValue.trim()){n=it.currentNode;if(el.classList.contains('hpre'))break}}
+var r=document.createRange();r.selectNodeContents(n);var b=r.getBoundingClientRect(),cs=getComputedStyle(n.parentNode);cv.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
+var m=cv.measureText(cs.textTransform=='uppercase'?n.nodeValue.trim().toUpperCase():n.nodeValue.trim());return {top:b.top+m.fontBoundingBoxAscent-m.actualBoundingBoxAscent,bot:b.top+m.fontBoundingBoxAscent+m.actualBoundingBoxDescent}}
+function gaps(){var p=document.querySelector('.hpre'),g=document.querySelector('.r-green'),y=document.querySelector('.r-yellow'),w=document.querySelector('.h-world');if(!p||!g||!y||!w)return;
+y.style.marginTop='';y.style.marginBottom='';
+for(var i=0;i<3;i++){var a=ink(p),b=ink(g),c=ink(y),d=ink(w),gap=b.top-a.bot;
+y.style.marginTop=(parseFloat(getComputedStyle(y).marginTop)+gap-(c.top-b.bot))+'px';
+c=ink(y);y.style.marginBottom=(parseFloat(getComputedStyle(y).marginBottom)+gap-(d.top-c.bot))+'px'}}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('load',fit);window.addEventListener('resize',fit);fit()})();
 </script>
 </body>
