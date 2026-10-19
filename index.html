@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<meta name="darkreader-lock">
 <title>SparkStation — Magic Mirror Photo Booth for Festivals</title>
 <meta name="description" content="Turn every guest into a star. SparkStation drops your festival's crowd inside your own visual world — delivered to their phone, shared to yours. Zero cost. Zero risk.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2L28 9V23L16 30L4 23V9L16 2Z' stroke='%23e84393' stroke-width='1.5' fill='%23e84393' fill-opacity='0.08'/%3E%3Cpath d='M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z' fill='%23e84393'/%3E%3C/svg%3E">
@@ -20,7 +22,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 img{max-width:100%;height:auto;display:block}
-:root{
+:root{color-scheme:only light;
   --pink:#e84393;
   --cyan:#00cec9;
   --gold:hsl(38,95%,60%);
@@ -292,7 +294,7 @@ footer .fcopy{font-size:15px;color:#fff}
 .htitle .h-small.psy{filter:drop-shadow(0 0 14px rgba(199,125,255,.55)) drop-shadow(0 0 30px rgba(62,232,255,.25));opacity:1}
 .htitle .h-world.psy{filter:drop-shadow(0 0 18px rgba(199,125,255,.6)) drop-shadow(0 0 42px rgba(62,232,255,.35)) drop-shadow(0 0 70px rgba(255,110,199,.25))}
 @keyframes psyFlow{0%{background-position:0 0,0% 50%}100%{background-position:0 0,100% 50%}}
-.hero-star-wrap::before{content:'';position:absolute;inset:-35%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.55) 18%,rgba(255,255,255,.18) 42%,rgba(255,255,255,0) 68%);animation:starPulse 3.2s ease-in-out infinite}
+.hero-star-wrap::before{content:'';position:absolute;inset:18%;border-radius:50%;background:#fff;filter:blur(28px);animation:starPulse 3.2s ease-in-out infinite}
 .hero-star-spin{opacity:1;position:relative}
 @keyframes starPulse{0%,100%{opacity:.75;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
 </style>
@@ -353,24 +355,24 @@ footer .fcopy{font-size:15px;color:#fff}
                 <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
               </radialGradient>
             </defs>
-            <circle cx="100" cy="100" r="95" fill="url(#haloGrad)"/>
-            <polygon points="100,100 88,84 100,14" fill="url(#facetLight)"/>
-            <polygon points="100,100 112,84 100,14" fill="url(#facetDark)"/>
-            <polygon points="100,100 88,84 158,42" fill="url(#facetLight)"/>
-            <polygon points="100,100 116,88 158,42" fill="url(#facetDark)"/>
-            <polygon points="100,100 116,88 186,100" fill="url(#facetLight)"/>
-            <polygon points="100,100 116,112 186,100" fill="url(#facetDark)"/>
-            <polygon points="100,100 116,112 158,158" fill="url(#facetLight)"/>
-            <polygon points="100,100 112,116 158,158" fill="url(#facetDark)"/>
-            <polygon points="100,100 112,116 100,186" fill="url(#facetLight)"/>
-            <polygon points="100,100 88,116 100,186" fill="url(#facetDark)"/>
-            <polygon points="100,100 88,116 42,158" fill="url(#facetLight)"/>
-            <polygon points="100,100 84,112 42,158" fill="url(#facetDark)"/>
-            <polygon points="100,100 84,112 14,100" fill="url(#facetLight)"/>
-            <polygon points="100,100 84,88 14,100" fill="url(#facetDark)"/>
-            <polygon points="100,100 84,88 42,42" fill="url(#facetLight)"/>
-            <polygon points="100,100 88,84 42,42" fill="url(#facetDark)"/>
-            <circle cx="100" cy="100" r="12" fill="url(#coreGrad)"/>
+            
+            <polygon points="100,100 88,84 100,14" fill="#fff"/>
+            <polygon points="100,100 112,84 100,14" fill="#fff"/>
+            <polygon points="100,100 88,84 158,42" fill="#fff"/>
+            <polygon points="100,100 116,88 158,42" fill="#fff"/>
+            <polygon points="100,100 116,88 186,100" fill="#fff"/>
+            <polygon points="100,100 116,112 186,100" fill="#fff"/>
+            <polygon points="100,100 116,112 158,158" fill="#fff"/>
+            <polygon points="100,100 112,116 158,158" fill="#fff"/>
+            <polygon points="100,100 112,116 100,186" fill="#fff"/>
+            <polygon points="100,100 88,116 100,186" fill="#fff"/>
+            <polygon points="100,100 88,116 42,158" fill="#fff"/>
+            <polygon points="100,100 84,112 42,158" fill="#fff"/>
+            <polygon points="100,100 84,112 14,100" fill="#fff"/>
+            <polygon points="100,100 84,88 14,100" fill="#fff"/>
+            <polygon points="100,100 84,88 42,42" fill="#fff"/>
+            <polygon points="100,100 88,84 42,42" fill="#fff"/>
+            <circle cx="100" cy="100" r="12" fill="#fff"/>
             <circle cx="100" cy="100" r="3" fill="#ffffff"/>
           </svg>
         </span>
