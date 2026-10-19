@@ -297,6 +297,11 @@ footer .fcopy{font-size:15px;color:#fff}
 .hero-star-wrap::before{content:'';position:absolute;inset:18%;border-radius:50%;background:#fff;filter:blur(28px);animation:starPulse 3.2s ease-in-out infinite}
 .hero-star-spin{opacity:1;position:relative}
 @keyframes starPulse{0%,100%{opacity:.75;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
+.hpre{line-height:1.25}
+.r-green{color:#22ff66;text-shadow:0 0 14px rgba(34,255,102,.55)}
+.htitle .h-small.r-yellow{color:#ffd60a;opacity:1;text-shadow:0 0 16px rgba(255,214,10,.6)}
+.htitle .h-world.r-red{color:#ff2a2a;-webkit-text-fill-color:#ff2a2a;background:none;text-shadow:0 0 20px rgba(255,42,42,.65),0 0 44px rgba(255,42,42,.3)}
+.htitle .h-small.r-yellow{-webkit-text-fill-color:#ffd60a;background:none}
 </style>
 </head>
 <body>
@@ -325,9 +330,9 @@ footer .fcopy{font-size:15px;color:#fff}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hbadge"><div class="hbadge-dot"></div><span>Magic Mirror Photo Booth · Free for Festivals</span></div>
-    <p class="hpre">Your crowd is already the story.</p>
+    <p class="hpre">Your crowd is<br><span class="r-green">already the story.</span></p>
     <h1 class="htitle" id="htitle">
-      <span class="h-small psy">BRING THEM INSIDE</span>
+      <span class="h-small r-yellow">BRING THEM INSIDE</span>
       <span class="world-wrap">
         <span class="hero-star-wrap">
           <span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span>
@@ -376,7 +381,7 @@ footer .fcopy{font-size:15px;color:#fff}
             <circle cx="100" cy="100" r="3" fill="#ffffff"/>
           </svg>
         </span>
-        <span class="h-world psy">YOUR WORLD</span>
+        <span class="h-world r-red">YOUR WORLD</span>
       </span>
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span>Our trailer rolls in. Guests pay a small fee, step in front of the mirror, and walk out with a printed photo inside your festival artwork, on a glowing LED lanyard, and on their phone, shared tagging your socials. Every share becomes a ripple.</p>
