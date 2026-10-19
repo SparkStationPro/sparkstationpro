@@ -284,15 +284,17 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 #cta{padding-bottom:26px}
 #cta .cta-note{margin-bottom:0}
 @media(max-width:768px){#how{padding-bottom:23px}#cta{padding-bottom:26px}}
-.rainbow{background:linear-gradient(90deg,#ff3cac,#ff8a00,#ffe600,#3cff7a,#00e5ff,#4d7cff,#b14dff,#ff3cac,#ff8a00,#ffe600);background-size:180% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rainbowMove 6s ease-in-out infinite alternate}
-@keyframes rainbowMove{from{background-position:0 0}to{background-position:100% 0}}
-.hero-star-spin{opacity:1;filter:drop-shadow(0 0 10px #fff) drop-shadow(0 0 28px rgba(255,255,255,.85))}
-.hero-spark{clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);border-radius:0}
-.hero-spark:nth-child(-n+8){width:10px!important;height:10px!important}
 #hero{padding-top:94px}
 .hbadge{border-radius:10px;border:1px solid rgba(140,90,255,.6);background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 45%,rgba(0,0,0,.25) 100%);box-shadow:var(--primary-glow),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.45),0 6px 14px rgba(0,0,0,.5);animation:none}
 .snum{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.35) 0%,rgba(0,206,201,.25) 35%,rgba(0,40,60,.6) 100%);border:1.5px solid rgba(0,206,201,.7);box-shadow:0 6px 12px rgba(0,0,0,.55),0 0 14px rgba(0,206,201,.35),inset 0 2px 2px rgba(255,255,255,.35),inset 0 -4px 6px rgba(0,0,0,.5);color:#eaffff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 @media(max-width:768px){#hero{padding-top:72px}}
+.psy{background-image:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 48%),linear-gradient(115deg,#ff6ec7 0%,#c77dff 16%,#7b8cff 32%,#3ee8ff 48%,#a6ffcf 62%,#ffd27a 76%,#ff6ec7 100%);background-size:100% 100%,260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:psyFlow 9s ease-in-out infinite alternate}
+.htitle .h-small.psy{filter:drop-shadow(0 0 14px rgba(199,125,255,.55)) drop-shadow(0 0 30px rgba(62,232,255,.25));opacity:1}
+.htitle .h-world.psy{filter:drop-shadow(0 0 18px rgba(199,125,255,.6)) drop-shadow(0 0 42px rgba(62,232,255,.35)) drop-shadow(0 0 70px rgba(255,110,199,.25))}
+@keyframes psyFlow{0%{background-position:0 0,0% 50%}100%{background-position:0 0,100% 50%}}
+.hero-star-wrap::before{content:'';position:absolute;inset:-35%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.55) 18%,rgba(220,235,255,.18) 42%,rgba(255,255,255,0) 68%);animation:starPulse 3.2s ease-in-out infinite}
+.hero-star-spin{opacity:1;position:relative}
+@keyframes starPulse{0%,100%{opacity:.75;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
 </style>
 </head>
 <body>
@@ -323,7 +325,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <div class="hbadge"><div class="hbadge-dot"></div><span>Magic Mirror Photo Booth · Free for Festivals</span></div>
     <p class="hpre">Your crowd is already the story.</p>
     <h1 class="htitle" id="htitle">
-      <span class="h-small rainbow">BRING THEM INSIDE</span>
+      <span class="h-small psy">BRING THEM INSIDE</span>
       <span class="world-wrap">
         <span class="hero-star-wrap">
           <span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span><span class="hero-spark"></span>
@@ -372,7 +374,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
             <circle cx="100" cy="100" r="3" fill="#ffffff"/>
           </svg>
         </span>
-        <span class="h-world rainbow">YOUR WORLD</span>
+        <span class="h-world psy">YOUR WORLD</span>
       </span>
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span>Our trailer rolls in. Guests pay a small fee, step in front of the mirror, and walk out with a printed photo inside your festival artwork, on a glowing LED lanyard, and on their phone, shared tagging your socials. Every share becomes a ripple.</p>
@@ -634,11 +636,11 @@ function submitContactForm(){
 </script>
 <script>
 (function(){var w=document.querySelector('.hero-star-wrap');if(!w)return;
-var cols=['#ffffff','#ffffff','#ff3cac','#ffe600','#3cff7a','#00e5ff','#b14dff','#ff8a00'];
+var cols=[['#c7a0ff','199,160,255'],['#00e0ff','0,224,255'],['#ffffff','255,255,255'],['#ff9ce8','255,156,232'],['#b0e0ff','176,224,255'],['#ffffff','255,255,255']];
 var R=Math.min(window.innerWidth,1400);
-for(var i=0;i<72;i++){var e=document.createElement('span');e.className='hero-spark';
-var a=Math.random()*Math.PI*2,d=(0.25+Math.random()*0.6)*R*0.55,sz=6+Math.random()*12,c=cols[i%cols.length];
-e.style.cssText='width:'+sz+'px;height:'+sz+'px;background:'+c+';box-shadow:0 0 10px 3px '+c+';--tx:'+Math.round(Math.cos(a)*d)+'px;--ty:'+Math.round(Math.sin(a)*d*0.55)+'px;animation-delay:'+(Math.random()*4).toFixed(2)+'s;animation-duration:'+(2.6+Math.random()*2.4).toFixed(2)+'s';
+for(var i=0;i<64;i++){var e=document.createElement('span');e.className='hero-spark';
+var c=cols[i%cols.length],a=Math.random()*Math.PI*2,d=(0.15+Math.random()*0.85)*R*0.5,sz=Math.random()<.5?3:4;
+e.style.cssText='width:'+sz+'px;height:'+sz+'px;background:'+c[0]+';box-shadow:0 0 10px 2px rgba('+c[1]+',.85);--tx:'+Math.round(Math.cos(a)*d)+'px;--ty:'+Math.round(Math.sin(a)*d*0.6)+'px;animation-delay:'+(Math.random()*3.5).toFixed(2)+'s;animation-duration:'+(2.6+Math.random()*1.8).toFixed(2)+'s';
 w.appendChild(e);}})();
 </script>
 </body>
