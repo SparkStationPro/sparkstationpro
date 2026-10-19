@@ -302,6 +302,11 @@ footer .fcopy{font-size:15px;color:#fff}
 .htitle .h-small.r-yellow{color:#ffd60a;opacity:1;text-shadow:0 0 16px rgba(255,214,10,.6)}
 .htitle .h-world.r-red{color:#ff2a2a;-webkit-text-fill-color:#ff2a2a;background:none;text-shadow:0 0 20px rgba(255,42,42,.65),0 0 44px rgba(255,42,42,.3)}
 .htitle .h-small.r-yellow{-webkit-text-fill-color:#ffd60a;background:none}
+.htitle,.hpre{--p:clamp(20px,3vw,38px);--w:clamp(44px,7.2vw,92px)}
+@media(max-width:768px){.htitle,.hpre{--w:clamp(36px,10vw,56px)}}
+@media(max-width:600px){.htitle,.hpre{--p:clamp(11px,3.8vw,20px)}}
+.hpre .r-green{font-size:calc((2*var(--p) + var(--w))/3)}
+.htitle .h-small.r-yellow{font-size:calc((var(--p) + 2*var(--w))/3)}
 </style>
 </head>
 <body>
