@@ -268,6 +268,13 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 @media(max-width:768px){.lanyard-split{grid-template-columns:1fr;gap:32px}.lanyard-pic img{max-height:460px}}
 #how,#lanyard,#social,#gets,#partnership,#cta{padding-top:31px}
 @media(max-width:768px){#how,#lanyard,#social,#gets,#partnership,#cta{padding-top:26px}}
+.hprice{font-family:'Exo 2',sans-serif;font-weight:800;font-size:20px;color:var(--gold);margin-top:18px}
+#pricing{padding:31px 0 100px;position:relative}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:16px}
+.price{font-family:'Exo 2',sans-serif;font-weight:900;font-size:46px;line-height:1;margin-bottom:24px}
+.price span{font-size:18px;font-weight:600;color:var(--mu)}
+#pricing .ritem{white-space:normal}
+@media(max-width:768px){#pricing{padding-top:26px}.price-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -351,6 +358,7 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
       </span>
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span>Our trailer rolls in. Guests pay a small fee, step in front of the mirror, and walk out with a printed photo inside your festival artwork, on a glowing LED lanyard, and on their phone, shared tagging your socials. Every share becomes a ripple.</p>
+    <p class="hprice">A $2,500/day attraction. Free for festivals.</p>
     <div style="margin:28px 0 8px"><button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation to Your Festival</button></div>
     <div class="booth-section">
       <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup">
@@ -456,6 +464,33 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
           <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>📍 A spot for our trailer</div>
           <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>🔌 Power</div>
           <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>✶ Your festival artwork</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="led-divider"></div>
+<section id="pricing">
+  <div class="container">
+    <p class="slabel rv">Pricing</p>
+    <h2 class="stitle rv">Two Ways to Have SparkStation</h2>
+    <div class="price-grid rv">
+      <div class="rcard you">
+        <div class="rcard-hdr"><div class="ricon">💳</div><div><h3>Hire</h3><p class="sub">Book the booth</p></div></div>
+        <div class="price">$2,500<span> per day</span></div>
+        <div class="ritems">
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Unlimited sessions and prints for your guests</div>
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>LED lanyards $10 each</div>
+        </div>
+      </div>
+      <div class="rcard we">
+        <div class="rcard-hdr"><div class="ricon">✶</div><div><h3>Festival Partner</h3><p class="sub">Recommended</p></div></div>
+        <div class="price">$0</div>
+        <div class="ritems">
+          <div class="ritem"><span class="rdot"></span>We bring it, run it and pay for it</div>
+          <div class="ritem"><span class="rdot"></span>Guests pay $25 per session</div>
+          <div class="ritem"><span class="rdot"></span>Your first 500 guests pay $15, so more of them post tagging you</div>
+          <div class="ritem"><span class="rdot"></span>On a 3-day festival: $7,500 of hire free, plus $5,000 of guest discount we fund. $12,500 of value.</div>
         </div>
       </div>
     </div>
