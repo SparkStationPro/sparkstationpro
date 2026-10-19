@@ -1,0 +1,14 @@
+name: diag
+on:
+  push:
+    branches: [diag]
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -s https://api.github.com/repos/SparkStationPro/sparkstationpro/pages || true
+          echo; dig +short sparkstationpro.com A; dig +short sparkstationpro.com AAAA; dig +short www.sparkstationpro.com
+          echo "--- http"; curl -sI -m 15 http://sparkstationpro.com/ | head -8
+          echo "--- https"; curl -sIv -m 15 https://sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|location|subject:|issuer:|expire|SSL certificate|error" | head
+          echo "--- https www"; curl -sIv -m 15 https://www.sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|location|subject:|SSL|error" | head
