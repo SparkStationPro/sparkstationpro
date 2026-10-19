@@ -261,6 +261,11 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 #how{padding-top:0}
 @media(min-width:769px){#how{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}}
 #cta{padding-top:0}
+.lanyard-split{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start}
+.lanyard-split .lanyard-text-full{margin-bottom:0}
+.lanyard-pic{text-align:center}
+.lanyard-pic img{width:auto;max-width:100%;max-height:560px;height:auto;display:inline-block;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}
+@media(max-width:768px){.lanyard-split{grid-template-columns:1fr;gap:32px}.lanyard-pic img{max-height:460px}}
 </style>
 </head>
 <body>
@@ -397,18 +402,18 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
 <div class="led-divider"></div>
 <section id="lanyard">
   <div class="container">
+    <div class="lanyard-split">
+    <div class="lanyard-copy">
     <p class="slabel rv">The VIP Lanyard</p>
     <h2 class="stitle rv">The Tribe Leaves Glowing</h2>
     <div class="lanyard-text-full rv">
       <p>The moment the photoshoot wraps, a full-size print, fresh off a professional-quality printer, slides into a card holder hanging from a pulsing VIP LED lanyard glowing around their neck. They walk out lit up, their photo locked inside the event's visual world, sparking smiles wherever they go.</p>
       <p style="margin-top:1.5rem">And months after, while every photo on their phone sinks into a camera roll long gone, this one lives in their bedroom. Hanging from a mirror. Sitting on a shelf. Staying in the real world. A friend walks in, spots it, asks the story. And just like that, the magic of that gathering is alive again in someone's living room, long after the last beat dropped.</p>
     </div>
-    <div class="photo-gallery rv">
-      <div class="gallery-duo">
-        <div class="gallery-item">
-          <img src="images/vip-lanyard-splendour.jpg" alt="VIP Lanyard" class="gallery-img-side">
-        </div>
-      </div>
+    </div>
+    <div class="lanyard-pic rv">
+      <img src="images/lanyard-cutout.webp" alt="VIP LED lanyard with a printed festival photo in its card holder">
+    </div>
     </div>
   </div>
 </section>
