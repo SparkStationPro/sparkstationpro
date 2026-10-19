@@ -257,6 +257,10 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
   .beams{display:none}
 }
 #gets .ritem,#partnership .ritem{white-space:normal}
+#social,#lanyard,#partnership{padding-top:0}
+#how{padding-top:0}
+@media(min-width:769px){#how{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}}
+#cta{padding-top:0}
 </style>
 </head>
 <body>
@@ -266,10 +270,10 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
     <span class="lspark">Spark</span><span class="lstation">Station</span>
   </a>
   <div class="nav-links">
-    <a href="#gets">What You Get</a>
-    <a href="#social">Social Reach</a>
     <a href="#how">How It Works</a>
     <a href="#lanyard">VIP Lanyard</a>
+    <a href="#social">Social Reach</a>
+    <a href="#gets">What You Get</a>
     <a href="#partnership">What We Bring</a>
   </div>
 </nav>
@@ -347,48 +351,6 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
   </div>
 </section>
 <div class="led-divider"></div>
-<section id="gets">
-  <div class="container">
-    <p class="slabel rv">What Your Festival Gets</p>
-    <h2 class="stitle rv">A New Attraction. Free.</h2>
-    <div class="part-grid rv">
-      <div class="rcard we">
-        <div class="rcard-hdr"><div class="ricon">🎁</div><div><h3>You Get</h3><p class="sub">At zero cost</p></div></div>
-        <div class="ritems">
-          <div class="ritem"><span class="rdot"></span>A crowd-pulling photo attraction run entirely by us</div>
-          <div class="ritem"><span class="rdot"></span>Every photo inside your festival artwork</div>
-          <div class="ritem"><span class="rdot"></span>Guests posting those photos, tagging your socials</div>
-          <div class="ritem"><span class="rdot"></span>The full photo gallery for your own socials</div>
-          <div class="ritem"><span class="rdot"></span>An opt-in guest contact list and prize draw</div>
-          <div class="ritem"><span class="rdot"></span>Printed keepsakes that keep your brand alive at home</div>
-        </div>
-      </div>
-      <div class="rcard you">
-        <div class="rcard-hdr"><div class="ricon">🎪</div><div><h3>You Give</h3><p class="sub">Just this</p></div></div>
-        <div class="ritems">
-          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>📍 A spot for our trailer</div>
-          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>🔌 Power</div>
-          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>✶ Your festival artwork</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="led-divider"></div>
-<section id="social">
-  <div class="container">
-    <p class="slabel rv">Social Reach</p>
-    <h2 class="stitle rv">Every Photo Shared, Tagging You</h2>
-    <p class="rv" style="font-size:17px;color:var(--mu);line-height:1.85">Every guest gets their photo on their phone in seconds and shares it with your festival tagged. Real people, posting to their real networks. Your own crowd carries your visuals outward. Every post, your billboard. <strong style="font-weight:700;color:rgba(255,255,255,0.9)">Every smile, a WIN.</strong></p>
-    <p class="cap-label rv">Max Full-Day Capacity:</p>
-    <div class="mgrid rv">
-      <div class="mblock"><span class="micon">📸</span><span class="mnum" data-target="300">0</span><span class="mlabel">Real Moments Captured</span></div>
-      <div class="mblock"><span class="micon">💬</span><span class="mnum" data-target="20" data-prefix="~">0</span><span class="mlabel">Natural Interactions Per Post</span></div>
-      <div class="mblock"><span class="micon">🔥</span><span class="mnum" data-target="6000" data-suffix="+">0</span><span class="mlabel">Daily Organic Interactions</span></div>
-    </div>
-  </div>
-</section>
-<div class="led-divider"></div>
 <section id="how">
   <div class="container">
     <p class="slabel rv">How It Works</p>
@@ -445,6 +407,48 @@ footer .fcopy{font-size:15px;color:rgba(255,255,255,.2)}
       <div class="gallery-duo">
         <div class="gallery-item">
           <img src="images/vip-lanyard-splendour.jpg" alt="VIP Lanyard" class="gallery-img-side">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="led-divider"></div>
+<section id="social">
+  <div class="container">
+    <p class="slabel rv">Social Reach</p>
+    <h2 class="stitle rv">Every Photo Shared, Tagging You</h2>
+    <p class="rv" style="font-size:17px;color:var(--mu);line-height:1.85">Every guest gets their photo on their phone in seconds and shares it with your festival tagged. Real people, posting to their real networks. Your own crowd carries your visuals outward. Every post, your billboard. <strong style="font-weight:700;color:rgba(255,255,255,0.9)">Every smile, a WIN.</strong></p>
+    <p class="cap-label rv">Max Full-Day Capacity:</p>
+    <div class="mgrid rv">
+      <div class="mblock"><span class="micon">📸</span><span class="mnum" data-target="300">0</span><span class="mlabel">Real Moments Captured</span></div>
+      <div class="mblock"><span class="micon">💬</span><span class="mnum" data-target="20" data-prefix="~">0</span><span class="mlabel">Natural Interactions Per Post</span></div>
+      <div class="mblock"><span class="micon">🔥</span><span class="mnum" data-target="6000" data-suffix="+">0</span><span class="mlabel">Daily Organic Interactions</span></div>
+    </div>
+  </div>
+</section>
+<div class="led-divider"></div>
+<section id="gets">
+  <div class="container">
+    <p class="slabel rv">What Your Festival Gets</p>
+    <h2 class="stitle rv">A New Attraction. Free.</h2>
+    <div class="part-grid rv">
+      <div class="rcard we">
+        <div class="rcard-hdr"><div class="ricon">🎁</div><div><h3>You Get</h3><p class="sub">At zero cost</p></div></div>
+        <div class="ritems">
+          <div class="ritem"><span class="rdot"></span>A crowd-pulling photo attraction run entirely by us</div>
+          <div class="ritem"><span class="rdot"></span>Every photo inside your festival artwork</div>
+          <div class="ritem"><span class="rdot"></span>Guests posting those photos, tagging your socials</div>
+          <div class="ritem"><span class="rdot"></span>The full photo gallery for your own socials</div>
+          <div class="ritem"><span class="rdot"></span>An opt-in guest contact list and prize draw</div>
+          <div class="ritem"><span class="rdot"></span>Printed keepsakes that keep your brand alive at home</div>
+        </div>
+      </div>
+      <div class="rcard you">
+        <div class="rcard-hdr"><div class="ricon">🎪</div><div><h3>You Give</h3><p class="sub">Just this</p></div></div>
+        <div class="ritems">
+          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>📍 A spot for our trailer</div>
+          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>🔌 Power</div>
+          <div class="ritem" style="color:rgba(255,215,0,.9)"><span class="rdot" style="background:var(--gold)"></span>✶ Your festival artwork</div>
         </div>
       </div>
     </div>
