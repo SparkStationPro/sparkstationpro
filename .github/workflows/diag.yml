@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "--- ajax POST"
-          curl -s -m 30 -X POST https://formsubmit.co/ajax/SparkStationPro@gmail.com -H "Content-Type: application/json" -H "Accept: application/json" -H "Origin: http://sparkstationpro.com" -H "Referer: http://sparkstationpro.com/" -d '{"name":"Activation test","email":"SparkStationPro@gmail.com","_subject":"SparkStation form activation test"}' -w "\nHTTP %{http_code}\n"
-          echo "--- caa"; dig +short sparkstationpro.com CAA; echo "--- ns"; dig +short sparkstationpro.com NS
+          echo "--- A"; dig +short sparkstationpro.com A
+          echo "--- AAAA"; dig +short sparkstationpro.com AAAA
+          echo "--- www"; dig +short www.sparkstationpro.com
+          echo "--- A @8.8.8.8"; dig +short @8.8.8.8 sparkstationpro.com A
+          echo "--- CAA"; dig +short sparkstationpro.com CAA
+          echo "--- https"; curl -sIv -m 15 https://sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|subject:|issuer:|SSL certificate|error" | head
