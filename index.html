@@ -6,17 +6,17 @@
 <meta name="color-scheme" content="only light">
 <meta name="darkreader-lock">
 <title>SparkStation — Magic Mirror Photo Booth for Festivals</title>
-<meta name="description" content="Turn every guest into a star. SparkStation drops your festival's crowd inside your own visual world — delivered to their phone, shared to yours. Zero cost. Zero risk.">
+<meta name="description" content="Turn every guest into a star. SparkStation drops your festival's crowd inside your own visual world — delivered to their phone, shared to yours.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2L28 9V23L16 30L4 23V9L16 2Z' stroke='%23e84393' stroke-width='1.5' fill='%23e84393' fill-opacity='0.08'/%3E%3Cpath d='M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z' fill='%23e84393'/%3E%3C/svg%3E">
 <meta property="og:title" content="SparkStation — Magic Mirror Photo Booth for Festivals">
-<meta property="og:description" content="A magic mirror photo booth for festivals. Free for the festival. Guests pay, your crowd shares, you get the content.">
+<meta property="og:description" content="A magic mirror photo booth for festivals. Free for selected festivals. Guests pay, your crowd shares, you get the content.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sparkstationpro.com/">
-<meta property="og:image" content="https://sparkstationpro.com/images/sparkstation-setup.jpg">
+<meta property="og:image" content="https://sparkstationpro.com/images/sparkstation-setup-banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SparkStation — Magic Mirror Photo Booth for Festivals">
-<meta name="twitter:description" content="A magic mirror photo booth for festivals. Free for the festival. Guests pay, your crowd shares, you get the content.">
-<meta name="twitter:image" content="https://sparkstationpro.com/images/sparkstation-setup.jpg">
+<meta name="twitter:description" content="A magic mirror photo booth for festivals. Free for selected festivals. Guests pay, your crowd shares, you get the content.">
+<meta name="twitter:image" content="https://sparkstationpro.com/images/sparkstation-setup-banner.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
@@ -309,6 +309,15 @@ footer .fcopy{font-size:15px;color:#fff}
 .htitle .h-small.r-yellow{font-size:calc((var(--p) + 2*var(--w))/3)}
 .htitle .h-small.r-yellow,.hpre .r-green{white-space:nowrap}
 .htitle{display:flow-root}
+.br-m{display:none}
+@media(max-width:768px){.br-m{display:inline}}
+.lan-m{display:none}
+@media(max-width:768px){.lan-m{display:block;margin:28px 0 8px}.lan-d{display:none}}
+.hero-lan{display:none}
+@media(min-width:1100px){.hero-lan{display:block;position:absolute;top:calc(61px + 9vh);height:auto;width:min(calc(0.372 * min(80vh,780px)),calc((100vw - 640px) / 2 - 4vw));z-index:1;pointer-events:none;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}.hero-lan-l{left:2.5vw}.hero-lan-r{right:4.5vw}}
+.spark-stage .btn-cta{background:linear-gradient(180deg,#1d1640 0%,#0e0b24 100%)}
+.cta-spark2{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;animation:ctaFly2 var(--d) linear var(--dl) infinite}
+@keyframes ctaFly2{0%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.6);opacity:0}8%{opacity:1}75%{opacity:.9}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(1);opacity:0}}
 </style>
 </head>
 <body>
@@ -326,6 +335,8 @@ footer .fcopy{font-size:15px;color:#fff}
   </div>
 </nav>
 <section id="hero">
+  <img class="hero-lan hero-lan-l" src="images/lanyard-cutout-left.webp" alt="" aria-hidden="true">
+  <img class="hero-lan hero-lan-r" src="images/lanyard-star-cutout.webp" alt="" aria-hidden="true">
   <div class="led-rope led-rope-top"></div>
   <div class="led-rope led-rope-bottom"></div>
   <div class="particle-field" id="particle-field">
@@ -336,7 +347,7 @@ footer .fcopy{font-size:15px;color:#fff}
   <div class="beams"><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hbadge"><div class="hbadge-dot"></div><span>Magic Mirror Photo Booth · Free for Festivals</span></div>
+    <div class="hbadge"><div class="hbadge-dot"></div><span>Magic Mirror Photo Booth · Free for Selected Festivals</span></div>
     <p class="hpre">Your crowd is<br><span class="r-green">already the story</span></p>
     <h1 class="htitle" id="htitle">
       <span class="h-small r-yellow">BRING THEM INSIDE</span>
@@ -391,11 +402,12 @@ footer .fcopy{font-size:15px;color:#fff}
         <span class="h-world r-red">YOUR WORLD</span>
       </span>
     </h1>
-    <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span>Our trailer rolls in. Guests pay a small fee, step in front of the mirror, and walk out with a printed photo inside your festival artwork, on a glowing LED lanyard, and on their phone, shared tagging your socials. Every share becomes a ripple.</p>
-    <p class="hprice">A $2,500/day attraction. Free for festivals.</p>
+    <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span></p>
+    <p class="hprice">A $2,500/day attraction.<br class="br-m"> Free for selected festivals.</p>
     <div style="margin:28px 0 8px"><button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation to Your Festival</button></div>
+    <div class="lanyard-pic lan-m"><img src="images/lanyard-star-cutout.webp" alt="VIP LED lanyard with a green star and a BOOM festival photo print"></div>
     <div class="booth-section">
-      <img src="images/sparkstation-setup.jpg" alt="SparkStation Setup">
+      <img src="images/sparkstation-setup-banner.jpg" alt="SparkStation Setup">
     </div>
   </div>
 </section>
@@ -403,19 +415,10 @@ footer .fcopy{font-size:15px;color:#fff}
 <section id="how">
   <div class="container">
     <p class="slabel rv">How It Works</p>
-    <h2 class="stitle rv">Zero Risk. Infinite Reach.</h2>
     <div class="hiw-grid rv">
       <div>
         <div class="step">
           <div class="snum">01</div>
-          <div class="sc">
-            <div class="flow-step-badge badge-gp"><span>💰</span><span>Guests Pay</span></div>
-            <h3>Guests Fund the Whole Thing</h3>
-            <p>with a small fee per photo session. The festival pays nothing.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="snum">02</div>
           <div class="sc">
             <div class="flow-step-badge badge-st"><span>📸</span><span>Star Treatment</span></div>
             <h3>The Star Treatment</h3>
@@ -423,7 +426,7 @@ footer .fcopy{font-size:15px;color:#fff}
           </div>
         </div>
         <div class="step">
-          <div class="snum">03</div>
+          <div class="snum">02</div>
           <div class="sc">
             <div class="flow-step-badge badge-is"><span>📡</span><span>Instant Share</span></div>
             <h3>Word Spreads Itself</h3>
@@ -431,7 +434,7 @@ footer .fcopy{font-size:15px;color:#fff}
           </div>
         </div>
         <div class="step" style="border-bottom:none">
-          <div class="snum">04</div>
+          <div class="snum">03</div>
           <div class="sc">
             <div class="flow-step-badge badge-bi"><span>🔥</span><span>Buzz Ignites</span></div>
             <h3>What You Walk Away With</h3>
@@ -512,7 +515,7 @@ footer .fcopy{font-size:15px;color:#fff}
         <div class="rcard-hdr"><div><h3>Festival Partner</h3><p class="sub">For approved festivals only</p></div></div>
         <div class="price">$0</div>
         <div class="ritems">
-          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>$15 per session with a print</div>
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Guests pay $15 per photo session, print included</div>
           <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>LED lanyards $10 each</div>
           <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>First 500 guests get free LED lanyards</div>
         </div>
@@ -521,7 +524,9 @@ footer .fcopy{font-size:15px;color:#fff}
         <div class="rcard-hdr"><div><h3>Hire</h3><p class="sub">Book the booth</p></div></div>
         <div class="price">$2,500<span> per day</span></div>
         <div class="ritems">
-          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Free unlimited sessions and free prints for your guests</div>
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Unlimited free photo sessions and prints for your guests</div>
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Run by our crew, all operating costs included</div>
+          <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>Nothing for you to do</div>
           <div class="ritem"><span class="rdot" style="background:var(--gold)"></span>+ LED lanyards $10 each</div>
         </div>
       </div>
@@ -547,7 +552,7 @@ footer .fcopy{font-size:15px;color:#fff}
         </div>
       </div>
     </div>
-    <div class="lanyard-pic rv">
+    <div class="lanyard-pic rv lan-d">
       <img src="images/lanyard-star-cutout.webp" alt="VIP LED lanyard with a green star and a BOOM festival photo print">
     </div>
     </div>
@@ -557,11 +562,10 @@ footer .fcopy{font-size:15px;color:#fff}
 <section id="cta">
   <div class="cta-content rv">
     <p class="cta-eye">Ready When You Are</p>
-    <h2 class="cta-title">Zero Cost.<br><span class="shimmer" style="font-size:inherit">Zero Risk.</span><br>All Yours.</h2>
     <div class="spark-stage">
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
-      <button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation Home</button>
+      <button class="btn-cta" onclick="openContactForm()">Book SparkStation 👆</button>
     </div>
     <p class="cta-note">Boutique to major festivals</p>
   </div>
@@ -586,11 +590,11 @@ footer .fcopy{font-size:15px;color:#fff}
       <p style="font-size:14px;color:#fff;margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@gmail.com</a></p>
       <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:18px;border-radius:2px"></div>
       <div id="cf-form-inner">
-        <div class="cf-field"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
-        <div class="cf-field"><label>Position / Role</label><input type="text" placeholder="e.g. Festival Director"></div>
-        <div class="cf-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:14px;color:#fff;letter-spacing:0">(optional)</span></label><input type="tel" placeholder="+61 000 000 000"></div>
-        <div class="cf-field"><label>Event Website</label><input type="url" placeholder="https://yourevent.com"></div>
+        <div class="cf-field"><label>Full Name</label><input type="text" name="name" placeholder="Your full name"></div>
+        <div class="cf-field"><label>Position / Role</label><input type="text" name="role" placeholder="e.g. Festival Director"></div>
+        <div class="cf-field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com"></div>
+        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:14px;color:#fff;letter-spacing:0">(optional)</span></label><input type="tel" name="phone" placeholder="+61 000 000 000"></div>
+        <div class="cf-field"><label>Event Website</label><input type="url" name="website" placeholder="https://yourevent.com"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><p id="cf-err" style="display:none;color:#ff6b6b;font-size:14px;margin:8px 0 0"></p></div>
         <button class="cf-submit" onclick="submitContactForm()">✶ Send My Request</button>
       </div>
       <div class="cf-success" id="cf-success">
@@ -644,8 +648,16 @@ document.getElementById('contact-modal').addEventListener('click',function(e){
   if(e.target===this) closeContactForm();
 });
 function submitContactForm(){
-  document.getElementById('cf-form-inner').style.display='none';
-  document.getElementById('cf-success').style.display='block';
+  var f=document.getElementById('cf-form-inner'),err=document.getElementById('cf-err'),btn=f.querySelector('.cf-submit'),d={};
+  f.querySelectorAll('input[name]').forEach(function(i){d[i.name]=i.value.trim()});
+  err.style.display='none';
+  if(!d.name||!d.email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){err.textContent='Please enter your name and a valid email address.';err.style.display='block';return}
+  if(d._honey)return;
+  d._subject='SparkStation booking request from '+d.name;d._replyto=d.email;d._template='table';
+  btn.disabled=true;btn.textContent='Sending...';
+  fetch('https://formsubmit.co/ajax/SparkStationPro@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
+  .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
+  .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan)">SparkStationPro@gmail.com</a>';err.style.display='block'});
 }
 </script>
 <script>
@@ -660,7 +672,9 @@ w.appendChild(e);}})();
 <script>
 (function(){function tw(el,n){var r=document.createRange();if(n){r.selectNodeContents(n)}else{r.selectNodeContents(el)}var ls=parseFloat(getComputedStyle(n?n.parentNode:el).letterSpacing)||0;return r.getBoundingClientRect().width-ls}
 function fit(){var w=document.querySelector('.h-world'),g=document.querySelector('.r-green'),y=document.querySelector('.r-yellow');if(!w||!g||!y)return;
-var p=document.querySelector('.hpre'),ww=tw(w),wc=tw(p,p.firstChild);[[g,wc+(ww-wc)/3],[y,wc+2*(ww-wc)/3]].forEach(function(a){var e=a[0],target=a[1];e.style.fontSize='';var cur=parseFloat(getComputedStyle(e).fontSize);for(var i=0;i<3;i++){cur=cur*target/tw(e);e.style.fontSize=cur+'px'}});gaps()}
+var p=document.querySelector('.hpre');[p,w].forEach(function(e){e.style.fontSize='';e.style.letterSpacing=''});
+if(window.innerWidth<=768){var w0=tw(w),vw=document.documentElement.clientWidth,k=(w0+(vw-w0)/2)/w0;[p,w].forEach(function(e){var c=getComputedStyle(e);e.style.fontSize=parseFloat(c.fontSize)*k+'px';e.style.letterSpacing=(parseFloat(c.letterSpacing)||0)*k+'px'})}
+var ww=tw(w),wc=tw(p,p.firstChild);[[g,wc+(ww-wc)/3],[y,wc+2*(ww-wc)/3]].forEach(function(a){var e=a[0],target=a[1];e.style.fontSize='';var cur=parseFloat(getComputedStyle(e).fontSize);for(var i=0;i<3;i++){cur=cur*target/tw(e);e.style.fontSize=cur+'px'}});gaps()}
 var cv=document.createElement('canvas').getContext('2d');
 function ink(el){var n=null,it=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);while(it.nextNode()){if(it.currentNode.nodeValue.trim()){n=it.currentNode;if(el.classList.contains('hpre'))break}}
 var r=document.createRange();r.selectNodeContents(n);var b=r.getBoundingClientRect(),cs=getComputedStyle(n.parentNode);cv.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
@@ -671,6 +685,18 @@ for(var i=0;i<3;i++){var a=ink(p),b=ink(g),c=ink(y),d=ink(w),gap=b.top-a.bot;
 y.style.marginTop=(parseFloat(getComputedStyle(y).marginTop)+gap-(c.top-b.bot))+'px';
 c=ink(y);y.style.marginBottom=(parseFloat(getComputedStyle(y).marginBottom)+gap-(d.top-c.bot))+'px'}}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('load',fit);window.addEventListener('resize',fit);fit()})();
+</script>
+<script>
+(function(){var st=document.querySelector('.spark-stage'),sec=document.getElementById('cta'),btn=st&&st.querySelector('.btn-cta');if(!st||!sec||!btn)return;
+st.querySelectorAll('.cta-spark').forEach(function(e){e.remove()});
+var cols=['#c7a0ff','#00e0ff','#fff','#ff9ce8','#ffd26e','#b0e0ff'],sp=[];
+for(var i=0;i<80;i++){var e=document.createElement('span');e.className='cta-spark2';var c=cols[i%cols.length],s=2+Math.random()*2.5;e.style.background=c;e.style.width=e.style.height=s+'px';e.style.boxShadow='0 0 8px 2px '+c;st.insertBefore(e,btn);sp.push(e)}
+function lay(){var sr=sec.getBoundingClientRect(),br=btn.getBoundingClientRect(),cx=br.left+br.width/2,cy=br.top+br.height/2,hw=br.width/2,hh=br.height/2;
+sp.forEach(function(e){var a=Math.random()*Math.PI*2,dx=Math.cos(a),dy=Math.sin(a),k=Math.min(hw/Math.abs(dx||1e-6),hh/Math.abs(dy||1e-6))*0.9;
+var ex=dx>0?(sr.right-cx)/dx:(sr.left-cx)/dx,ey=dy>0?(sr.bottom-cy)/dy:(sr.top-cy)/dy,far=Math.min(Math.abs(ex),Math.abs(ey))*(0.75+Math.random()*0.3);
+e.style.setProperty('--sx',dx*k+'px');e.style.setProperty('--sy',dy*k+'px');e.style.setProperty('--tx',dx*far+'px');e.style.setProperty('--ty',dy*far+'px');
+var d=2.6+Math.random()*2.4;e.style.setProperty('--d',d+'s');e.style.setProperty('--dl',(-Math.random()*d)+'s')})}
+lay();window.addEventListener('load',lay);window.addEventListener('resize',lay)})();
 </script>
 </body>
 </html>

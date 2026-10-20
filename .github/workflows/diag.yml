@@ -7,8 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -s https://api.github.com/repos/SparkStationPro/sparkstationpro/pages || true
-          echo; dig +short sparkstationpro.com A; dig +short sparkstationpro.com AAAA; dig +short www.sparkstationpro.com
-          echo "--- http"; curl -sI -m 15 http://sparkstationpro.com/ | head -8
-          echo "--- https"; curl -sIv -m 15 https://sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|location|subject:|issuer:|expire|SSL certificate|error" | head
-          echo "--- https www"; curl -sIv -m 15 https://www.sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|location|subject:|SSL|error" | head
+          echo "--- ajax POST"
+          curl -s -m 30 -X POST https://formsubmit.co/ajax/SparkStationPro@gmail.com -H "Content-Type: application/json" -H "Accept: application/json" -H "Origin: http://sparkstationpro.com" -H "Referer: http://sparkstationpro.com/" -d '{"name":"Activation test","email":"SparkStationPro@gmail.com","_subject":"SparkStation form activation test"}' -w "\nHTTP %{http_code}\n"
