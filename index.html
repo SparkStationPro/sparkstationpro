@@ -313,6 +313,8 @@ footer .fcopy{font-size:15px;color:#fff}
 @media(max-width:768px){.br-m{display:inline}}
 .lan-m{display:none}
 @media(max-width:768px){.lan-m{display:block;margin:28px 0 8px}.lan-d{display:none}}
+.hero-lan{display:none}
+@media(min-width:1280px){.hero-lan{display:block;position:absolute;top:calc(61px + 9vh);height:min(80vh,780px);width:auto;z-index:1;pointer-events:none;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}.hero-lan-l{left:2.5vw}.hero-lan-r{right:4.5vw}}
 </style>
 </head>
 <body>
@@ -330,6 +332,8 @@ footer .fcopy{font-size:15px;color:#fff}
   </div>
 </nav>
 <section id="hero">
+  <img class="hero-lan hero-lan-l" src="images/lanyard-cutout-left.webp" alt="" aria-hidden="true">
+  <img class="hero-lan hero-lan-r" src="images/lanyard-star-cutout.webp" alt="" aria-hidden="true">
   <div class="led-rope led-rope-top"></div>
   <div class="led-rope led-rope-bottom"></div>
   <div class="particle-field" id="particle-field">
