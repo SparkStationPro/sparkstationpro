@@ -565,7 +565,7 @@ footer .fcopy{font-size:15px;color:#fff}
     <div class="spark-stage">
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
-      <button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation Home</button>
+      <button class="btn-cta" onclick="openContactForm()">Book SparkStation 👆</button>
     </div>
     <p class="cta-note">Boutique to major festivals</p>
   </div>
@@ -590,11 +590,11 @@ footer .fcopy{font-size:15px;color:#fff}
       <p style="font-size:14px;color:#fff;margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@gmail.com</a></p>
       <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:18px;border-radius:2px"></div>
       <div id="cf-form-inner">
-        <div class="cf-field"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
-        <div class="cf-field"><label>Position / Role</label><input type="text" placeholder="e.g. Festival Director"></div>
-        <div class="cf-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:14px;color:#fff;letter-spacing:0">(optional)</span></label><input type="tel" placeholder="+61 000 000 000"></div>
-        <div class="cf-field"><label>Event Website</label><input type="url" placeholder="https://yourevent.com"></div>
+        <div class="cf-field"><label>Full Name</label><input type="text" name="name" placeholder="Your full name"></div>
+        <div class="cf-field"><label>Position / Role</label><input type="text" name="role" placeholder="e.g. Festival Director"></div>
+        <div class="cf-field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com"></div>
+        <div class="cf-field"><label>Phone <span style="font-weight:400;text-transform:none;font-size:14px;color:#fff;letter-spacing:0">(optional)</span></label><input type="tel" name="phone" placeholder="+61 000 000 000"></div>
+        <div class="cf-field"><label>Event Website</label><input type="url" name="website" placeholder="https://yourevent.com"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><p id="cf-err" style="display:none;color:#ff6b6b;font-size:14px;margin:8px 0 0"></p></div>
         <button class="cf-submit" onclick="submitContactForm()">✶ Send My Request</button>
       </div>
       <div class="cf-success" id="cf-success">
@@ -648,8 +648,16 @@ document.getElementById('contact-modal').addEventListener('click',function(e){
   if(e.target===this) closeContactForm();
 });
 function submitContactForm(){
-  document.getElementById('cf-form-inner').style.display='none';
-  document.getElementById('cf-success').style.display='block';
+  var f=document.getElementById('cf-form-inner'),err=document.getElementById('cf-err'),btn=f.querySelector('.cf-submit'),d={};
+  f.querySelectorAll('input[name]').forEach(function(i){d[i.name]=i.value.trim()});
+  err.style.display='none';
+  if(!d.name||!d.email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){err.textContent='Please enter your name and a valid email address.';err.style.display='block';return}
+  if(d._honey)return;
+  d._subject='SparkStation booking request from '+d.name;d._replyto=d.email;d._template='table';
+  btn.disabled=true;btn.textContent='Sending...';
+  fetch('https://formsubmit.co/ajax/SparkStationPro@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
+  .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
+  .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan)">SparkStationPro@gmail.com</a>';err.style.display='block'});
 }
 </script>
 <script>
