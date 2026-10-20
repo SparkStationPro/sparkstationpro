@@ -13,3 +13,4 @@ jobs:
           echo "--- A @8.8.8.8"; dig +short @8.8.8.8 sparkstationpro.com A
           echo "--- CAA"; dig +short sparkstationpro.com CAA
           echo "--- https"; curl -sIv -m 15 https://sparkstationpro.com/ 2>&1 | grep -iE "^< HTTP|subject:|issuer:|SSL certificate|error" | head
+# 1792500113
