@@ -409,7 +409,7 @@ footer .fcopy{font-size:15px;color:#fff}
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span></p>
     <p class="hprice">A $2,500/day attraction.<br class="br-m"> Free for selected festivals.</p>
-    <div style="margin:28px 0 8px"><button class="btn-cta btn-top" onclick="openContactForm()">✶ Bring SparkStation to Your Festival</button></div>
+    <div style="margin:28px 0 8px"><button class="btn-cta btn-top" onclick="openContactForm()">👉 Book SparkStation</button></div>
     <div class="lanyard-pic lan-m"><img src="images/lanyard-star-cutout.webp" alt="VIP LED lanyard with a green star and a BOOM festival photo print"></div>
     <div class="booth-section">
       <img src="images/sparkstation-setup-banner.jpg" alt="SparkStation Setup">
@@ -588,12 +588,14 @@ footer .fcopy{font-size:15px;color:#fff}
     <div class="modal-orb modal-orb-2"></div>
     <button class="cf-close" onclick="closeContactForm()">✕</button>
     <div style="position:relative;z-index:1">
+      <div id="cf-head">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg>
         <h2 style="font-family:'Exo 2',sans-serif;font-size:24px;font-weight:800">Bring <span style="color:#e84393">SparkStation</span> Home</h2>
       </div>
       <p style="font-size:14px;color:#fff;margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@gmail.com</a></p>
       <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:18px;border-radius:2px"></div>
+      </div>
       <div id="cf-form-inner">
         <div class="cf-field"><label>Full Name</label><input type="text" name="name" placeholder="Your full name"></div>
         <div class="cf-field"><label>Position / Role</label><input type="text" name="role" placeholder="e.g. Festival Director"></div>
@@ -604,7 +606,7 @@ footer .fcopy{font-size:15px;color:#fff}
       </div>
       <div class="cf-success" id="cf-success">
         <h3>✨ We'll Be In Touch!</h3>
-        <p style="color:var(--mu);font-size:17px">Thank you! We'll get back to you ASAP to discuss bringing SparkStation to your gathering.</p>
+        <p style="color:var(--mu);font-size:17px">We'll get back to you ASAP.</p>
       </div>
     </div>
   </div>
@@ -661,7 +663,7 @@ function submitContactForm(){
   d._subject='SparkStation booking request from '+d.name;d._replyto=d.email;d._template='table';
   btn.disabled=true;btn.textContent='Sending...';
   fetch('https://formsubmit.co/ajax/SparkStationPro@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
-  .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
+  .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-head').style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
   .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan)">SparkStationPro@gmail.com</a>';err.style.display='block'});
 }
 </script>
