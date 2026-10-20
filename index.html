@@ -296,6 +296,8 @@ footer .fcopy{font-size:15px;color:#fff}
 @keyframes psyFlow{0%{background-position:0 0,0% 50%}100%{background-position:0 0,100% 50%}}
 .hero-star-wrap::before{content:'';position:absolute;inset:18%;border-radius:50%;background:#fff;filter:blur(28px);animation:starPulse 3.2s ease-in-out infinite}
 .hero-star-spin{opacity:1;position:relative}
+.hero-star-wrap{z-index:1}
+.htitle .h-world{filter:none}
 @keyframes starPulse{0%,100%{opacity:.75;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
 .hpre{line-height:1.25}
 .r-green{color:#22ff66;text-shadow:0 0 14px rgba(34,255,102,.55)}
@@ -308,6 +310,10 @@ footer .fcopy{font-size:15px;color:#fff}
 .hpre .r-green{font-size:calc((2*var(--p) + var(--w))/3)}
 .htitle .h-small.r-yellow{font-size:calc((var(--p) + 2*var(--w))/3)}
 .htitle .h-small.r-yellow,.hpre .r-green{white-space:nowrap}
+.hpre{text-shadow:0 0.015em 0 #c9c9c9,0 0.030em 0 #a8a8a8,0 0.045em 0 #878787,0 0.060em 0 #666666,0 0.075em 0 #474747,0 .1em .14em rgba(0,0,0,.55)}
+.hpre .r-green{text-shadow:0 0.015em 0 #1ccc52,0 0.030em 0 #159a3e,0 0.045em 0 #0f6e2c,0 0.060em 0 #09481d,0 0.075em 0 #052b11,0 .1em .14em rgba(0,0,0,.55),0 0 14px rgba(34,255,102,.45)}
+.htitle .h-small.r-yellow{text-shadow:0 0.015em 0 #d6b300,0 0.030em 0 #a88d00,0 0.045em 0 #7b6700,0 0.060em 0 #524500,0 0.075em 0 #2e2700,0 .1em .14em rgba(0,0,0,.55),0 0 16px rgba(255,214,10,.5)}
+.htitle .h-world.r-red{text-shadow:0 0.015em 0 #d61f1f,0 0.030em 0 #a81616,0 0.045em 0 #7b0e0e,0 0.060em 0 #520808,0 0.075em 0 #2e0404,0 .1em .14em rgba(0,0,0,.55),0 0 20px rgba(255,42,42,.55),0 0 44px rgba(255,42,42,.25)}
 .htitle{display:flow-root}
 .br-m{display:none}
 @media(max-width:768px){.br-m{display:inline}}
@@ -315,8 +321,7 @@ footer .fcopy{font-size:15px;color:#fff}
 @media(max-width:768px){.lan-m{display:block;margin:28px 0 8px}.lan-d{display:none}}
 .hero-lan{display:none}
 @media(min-width:1100px){.hero-lan{display:block;position:absolute;top:calc(61px + 9vh);height:auto;width:min(calc(0.372 * min(80vh,780px)),calc((100vw - 640px) / 2 - 4vw));z-index:1;pointer-events:none;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}.hero-lan-l{left:2.5vw}.hero-lan-r{right:4.5vw}}
-.spark-stage .btn-cta{background:linear-gradient(180deg,#1d1640 0%,#0e0b24 100%)}
-.btn-logo{display:inline-flex;align-items:center;gap:3px;font-family:'Exo 2',sans-serif;font-weight:900;text-transform:none;letter-spacing:0;font-size:1.08em;white-space:nowrap}.btn-logo .lspark{color:#fff;text-shadow:var(--primary-text-glow)}.btn-logo .lstation{color:var(--pink);text-shadow:var(--primary-text-glow)}.btn-cta.btn-l{display:inline-block;text-align:center;line-height:1.5}.btn-l .btn-logo{vertical-align:-4px;margin:0 6px}
+.spark-stage .btn-cta,.btn-cta.btn-top{background:linear-gradient(180deg,#1d1640 0%,#0e0b24 100%)}
 .cta-spark2{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;animation:ctaFly2 var(--d) linear var(--dl) infinite}
 @keyframes ctaFly2{0%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.6);opacity:0}8%{opacity:1}75%{opacity:.9}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(1);opacity:0}}
 </style>
@@ -348,7 +353,6 @@ footer .fcopy{font-size:15px;color:#fff}
   <div class="beams"><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div><div class="beam"></div></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hbadge"><div class="hbadge-dot"></div><span>Magic Mirror Photo Booth · Free for Selected Festivals</span></div>
     <p class="hpre">Your crowd is<br><span class="r-green">already the story</span></p>
     <h1 class="htitle" id="htitle">
       <span class="h-small r-yellow">BRING THEM INSIDE</span>
@@ -405,7 +409,7 @@ footer .fcopy{font-size:15px;color:#fff}
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span></p>
     <p class="hprice">A $2,500/day attraction.<br class="br-m"> Free for selected festivals.</p>
-    <div style="margin:28px 0 8px"><button class="btn-cta btn-l" onclick="openContactForm()">✶ Bring <span class="btn-logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></span><br class="br-m"> to Your Festival</button></div>
+    <div style="margin:28px 0 8px"><button class="btn-cta btn-top" onclick="openContactForm()">✶ Bring SparkStation to Your Festival</button></div>
     <div class="lanyard-pic lan-m"><img src="images/lanyard-star-cutout.webp" alt="VIP LED lanyard with a green star and a BOOM festival photo print"></div>
     <div class="booth-section">
       <img src="images/sparkstation-setup-banner.jpg" alt="SparkStation Setup">
@@ -566,7 +570,7 @@ footer .fcopy{font-size:15px;color:#fff}
     <div class="spark-stage">
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
-      <button class="btn-cta btn-l" onclick="openContactForm()">👉 Book <span class="btn-logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></span></button>
+      <button class="btn-cta" onclick="openContactForm()">👉 Book SparkStation</button>
     </div>
     <p class="cta-note">Boutique to major festivals</p>
   </div>
