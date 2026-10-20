@@ -662,7 +662,7 @@ function submitContactForm(){
   if(d._honey)return;
   d._subject='SparkStation booking request from '+d.name;d._replyto=d.email;d._template='table';
   btn.disabled=true;btn.textContent='Sending...';
-  fetch('https://formsubmit.co/ajax/SparkStationPro@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
+  fetch('https://formsubmit.co/ajax/bookings@sparkstationpro.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
   .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-head').style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
   .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan)">SparkStationPro@gmail.com</a>';err.style.display='block'});
 }
