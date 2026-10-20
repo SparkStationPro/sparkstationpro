@@ -556,7 +556,7 @@ footer .fcopy{font-size:15px;color:#fff}
 <div class="led-divider"></div>
 <footer>
   <a href="#hero" class="logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></a>
-  <span class="fmail">SparkStationPro@gmail.com</span>
+  <span class="fmail">bookings@sparkstationpro.com</span>
   <span class="fcopy">© 2026 SparkStation</span>
 </footer>
 <div class="led-divider"></div>
@@ -571,7 +571,7 @@ footer .fcopy{font-size:15px;color:#fff}
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg>
         <h2 style="font-family:'Exo 2',sans-serif;font-size:24px;font-weight:800">Bring <span style="color:#e84393">SparkStation</span> Home</h2>
       </div>
-      <p style="font-size:14px;color:#fff;margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan);text-decoration:none">SparkStationPro@gmail.com</a></p>
+      <p style="font-size:14px;color:#fff;margin-bottom:14px">Fill this form and we will contact you ASAP — or email us at <a href="mailto:bookings@sparkstationpro.com" style="color:var(--cyan);text-decoration:none">bookings@sparkstationpro.com</a></p>
       <div style="height:1px;background:linear-gradient(to right,#e84393,#00cec9);margin-bottom:18px;border-radius:2px"></div>
       </div>
       <div id="cf-form-inner">
@@ -645,7 +645,7 @@ function submitContactForm(){
   btn.disabled=true;btn.textContent='Sending...';
   fetch('https://formsubmit.co/ajax/bookings@sparkstationpro.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
   .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true')){f.style.display='none';document.getElementById('cf-head').style.display='none';document.getElementById('cf-success').style.display='block'}else{throw 0}})
-  .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:SparkStationPro@gmail.com" style="color:var(--cyan)">SparkStationPro@gmail.com</a>';err.style.display='block'});
+  .catch(function(){btn.disabled=false;btn.textContent='✶ Send My Request';err.innerHTML='Sorry, it did not send. Please email us at <a href="mailto:bookings@sparkstationpro.com" style="color:var(--cyan)">bookings@sparkstationpro.com</a>';err.style.display='block'});
 }
 </script>
 <script>
