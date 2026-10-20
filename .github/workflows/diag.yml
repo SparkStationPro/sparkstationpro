@@ -9,3 +9,4 @@ jobs:
       - run: |
           echo "--- ajax POST"
           curl -s -m 30 -X POST https://formsubmit.co/ajax/SparkStationPro@gmail.com -H "Content-Type: application/json" -H "Accept: application/json" -H "Origin: http://sparkstationpro.com" -H "Referer: http://sparkstationpro.com/" -d '{"name":"Activation test","email":"SparkStationPro@gmail.com","_subject":"SparkStation form activation test"}' -w "\nHTTP %{http_code}\n"
+          echo "--- caa"; dig +short sparkstationpro.com CAA; echo "--- ns"; dig +short sparkstationpro.com NS
