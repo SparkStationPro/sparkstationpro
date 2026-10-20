@@ -316,6 +316,7 @@ footer .fcopy{font-size:15px;color:#fff}
 .hero-lan{display:none}
 @media(min-width:1100px){.hero-lan{display:block;position:absolute;top:calc(61px + 9vh);height:auto;width:min(calc(0.372 * min(80vh,780px)),calc((100vw - 640px) / 2 - 4vw));z-index:1;pointer-events:none;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}.hero-lan-l{left:2.5vw}.hero-lan-r{right:4.5vw}}
 .spark-stage .btn-cta{background:linear-gradient(180deg,#1d1640 0%,#0e0b24 100%)}
+.btn-logo{display:inline-flex;align-items:center;gap:3px;font-family:'Exo 2',sans-serif;font-weight:900;text-transform:none;letter-spacing:0;font-size:1.08em;white-space:nowrap}.btn-logo .lspark{color:#fff;text-shadow:var(--primary-text-glow)}.btn-logo .lstation{color:var(--pink);text-shadow:var(--primary-text-glow)}.btn-cta.btn-l{display:inline-block;text-align:center;line-height:1.5}.btn-l .btn-logo{vertical-align:-4px;margin:0 6px}
 .cta-spark2{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;animation:ctaFly2 var(--d) linear var(--dl) infinite}
 @keyframes ctaFly2{0%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.6);opacity:0}8%{opacity:1}75%{opacity:.9}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(1);opacity:0}}
 </style>
@@ -404,7 +405,7 @@ footer .fcopy{font-size:15px;color:#fff}
     </h1>
     <p class="hsub"><span class="hsub-bold"><span class="desktop-only">Every soul steps in as a face in the crowd.<br>Everyone comes out a star.</span><span class="mobile-only">Every soul steps in as a<br>face in the crowd.<br>Everyone comes out a star.</span></span></p>
     <p class="hprice">A $2,500/day attraction.<br class="br-m"> Free for selected festivals.</p>
-    <div style="margin:28px 0 8px"><button class="btn-cta" onclick="openContactForm()">✶ Bring SparkStation to Your Festival</button></div>
+    <div style="margin:28px 0 8px"><button class="btn-cta btn-l" onclick="openContactForm()">✶ Bring <span class="btn-logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></span><br class="br-m"> to Your Festival</button></div>
     <div class="lanyard-pic lan-m"><img src="images/lanyard-star-cutout.webp" alt="VIP LED lanyard with a green star and a BOOM festival photo print"></div>
     <div class="booth-section">
       <img src="images/sparkstation-setup-banner.jpg" alt="SparkStation Setup">
@@ -565,7 +566,7 @@ footer .fcopy{font-size:15px;color:#fff}
     <div class="spark-stage">
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
       <span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span><span class="cta-spark"></span>
-      <button class="btn-cta" onclick="openContactForm()">👉 Book SparkStation</button>
+      <button class="btn-cta btn-l" onclick="openContactForm()">👉 Book <span class="btn-logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="#e84393" stroke-width="1.5" fill="#e84393" fill-opacity="0.08"/><path d="M18.5 6L11 17H17L14 26L22 14H16L18.5 6Z" fill="#e84393"/></svg><span class="lspark">Spark</span><span class="lstation">Station</span></span></button>
     </div>
     <p class="cta-note">Boutique to major festivals</p>
   </div>
