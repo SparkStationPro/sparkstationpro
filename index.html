@@ -315,6 +315,9 @@ footer .fcopy{font-size:15px;color:#fff}
 @media(max-width:768px){.lan-m{display:block;margin:28px 0 8px}.lan-d{display:none}}
 .hero-lan{display:none}
 @media(min-width:1100px){.hero-lan{display:block;position:absolute;top:calc(61px + 9vh);height:auto;width:min(calc(0.372 * min(80vh,780px)),calc((100vw - 640px) / 2 - 4vw));z-index:1;pointer-events:none;filter:drop-shadow(0 0 24px rgba(0,180,255,.25))}.hero-lan-l{left:2.5vw}.hero-lan-r{right:4.5vw}}
+.spark-stage .btn-cta{background:linear-gradient(180deg,#1d1640 0%,#0e0b24 100%)}
+.cta-spark2{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;animation:ctaFly2 var(--d) linear var(--dl) infinite}
+@keyframes ctaFly2{0%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.6);opacity:0}8%{opacity:1}75%{opacity:.9}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(1);opacity:0}}
 </style>
 </head>
 <body>
@@ -674,6 +677,18 @@ for(var i=0;i<3;i++){var a=ink(p),b=ink(g),c=ink(y),d=ink(w),gap=b.top-a.bot;
 y.style.marginTop=(parseFloat(getComputedStyle(y).marginTop)+gap-(c.top-b.bot))+'px';
 c=ink(y);y.style.marginBottom=(parseFloat(getComputedStyle(y).marginBottom)+gap-(d.top-c.bot))+'px'}}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('load',fit);window.addEventListener('resize',fit);fit()})();
+</script>
+<script>
+(function(){var st=document.querySelector('.spark-stage'),sec=document.getElementById('cta'),btn=st&&st.querySelector('.btn-cta');if(!st||!sec||!btn)return;
+st.querySelectorAll('.cta-spark').forEach(function(e){e.remove()});
+var cols=['#c7a0ff','#00e0ff','#fff','#ff9ce8','#ffd26e','#b0e0ff'],sp=[];
+for(var i=0;i<80;i++){var e=document.createElement('span');e.className='cta-spark2';var c=cols[i%cols.length],s=2+Math.random()*2.5;e.style.background=c;e.style.width=e.style.height=s+'px';e.style.boxShadow='0 0 8px 2px '+c;st.insertBefore(e,btn);sp.push(e)}
+function lay(){var sr=sec.getBoundingClientRect(),br=btn.getBoundingClientRect(),cx=br.left+br.width/2,cy=br.top+br.height/2,hw=br.width/2,hh=br.height/2;
+sp.forEach(function(e){var a=Math.random()*Math.PI*2,dx=Math.cos(a),dy=Math.sin(a),k=Math.min(hw/Math.abs(dx||1e-6),hh/Math.abs(dy||1e-6))*0.9;
+var ex=dx>0?(sr.right-cx)/dx:(sr.left-cx)/dx,ey=dy>0?(sr.bottom-cy)/dy:(sr.top-cy)/dy,far=Math.min(Math.abs(ex),Math.abs(ey))*(0.75+Math.random()*0.3);
+e.style.setProperty('--sx',dx*k+'px');e.style.setProperty('--sy',dy*k+'px');e.style.setProperty('--tx',dx*far+'px');e.style.setProperty('--ty',dy*far+'px');
+var d=2.6+Math.random()*2.4;e.style.setProperty('--d',d+'s');e.style.setProperty('--dl',(-Math.random()*d)+'s')})}
+lay();window.addEventListener('load',lay);window.addEventListener('resize',lay)})();
 </script>
 </body>
 </html>
