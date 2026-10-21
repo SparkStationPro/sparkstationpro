@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Your SparkStation photo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --pink: #e84393; --cyan: #00e0ff; --bg: #0b0b12; --text: #ffffff; --muted: #b9b9c6; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Exo 2', Arial, sans-serif; text-align: center; }
+  main { max-width: 520px; margin: 0 auto; padding: 18px 16px 40px; }
+  h1 { font-size: 22px; font-weight: 800; margin: 6px 0 14px; letter-spacing: .5px; }
+  h1 span { color: var(--pink); }
+  img { width: 100%; height: auto; border-radius: 10px; display: block; background: #000; }
+  .btn { display: block; width: 100%; margin-top: 14px; padding: 16px; border: 0; border-radius: 12px; font: 700 20px 'Exo 2', Arial, sans-serif; color: #fff; text-decoration: none; cursor: pointer; }
+  .share { background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af); }
+  .save { background: #24243a; }
+  p { color: var(--muted); font-size: 15px; line-height: 1.4; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Your <span>SparkStation</span> photo</h1>
+  <img id="photo" alt="Your SparkStation photo">
+  <button id="share" class="btn share hidden">Share to Instagram</button>
+  <a id="save" class="btn save" download="SparkStation.jpg">Save photo</a>
+  <p id="tip" class="hidden">Tap <b>Share to Instagram</b>, then choose <b>Instagram</b>.</p>
+  <p id="err" class="hidden">This photo link is not valid.</p>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var c = q.get('c') || '', p = q.get('p') || '';
+  // only photos from the booth's Cloudinary storage
+  if (!/^[a-z0-9_-]{1,64}$/i.test(c) || !/^[a-z0-9_\/.-]{1,200}$/i.test(p) || p.indexOf('..') >= 0) {
+    document.getElementById('err').classList.remove('hidden');
+    document.getElementById('photo').classList.add('hidden');
+    document.getElementById('save').classList.add('hidden');
+    return;
+  }
+  var url = 'https://res.cloudinary.com/' + c + '/image/upload/' + p;
+  var dl = 'https://res.cloudinary.com/' + c + '/image/upload/fl_attachment:SparkStation/' + p;
+  document.getElementById('photo').src = url;
+  document.getElementById('save').href = dl;
+
+  // load the photo first, so the share opens straight away when tapped
+  var file = null;
+  if (navigator.canShare) {
+    fetch(url).then(function (r) { return r.blob(); }).then(function (b) {
+      var f = new File([b], 'SparkStation.jpg', { type: 'image/jpeg' });
+      if (navigator.canShare({ files: [f] })) {
+        file = f;
+        document.getElementById('share').classList.remove('hidden');
+        document.getElementById('tip').classList.remove('hidden');
+      }
+    }).catch(function () {});
+  }
+  document.getElementById('share').addEventListener('click', function () {
+    if (file) navigator.share({ files: [file] }).catch(function () {});
+  });
+})();
+</script>
+</body>
+</html>
